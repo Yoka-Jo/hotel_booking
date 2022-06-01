@@ -32,6 +32,14 @@ ThemeData getAppTheme({required bool isLight}) {
         ),
       ),
     ),
+    outlinedButtonTheme: OutlinedButtonThemeData(
+      style: OutlinedButton.styleFrom(
+        elevation: 0.0,
+        fixedSize: const Size(double.infinity, 64),
+        side: const BorderSide(color: AppColors.primary, width: 1.5),
+        primary: isLight ? Colors.black : Colors.white,
+      ),
+    ),
     textTheme: TextTheme(
       titleLarge: getBoldStyle(
           color: textColor, fontSize: 24, family: FontFamilies.lato),

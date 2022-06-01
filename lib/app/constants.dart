@@ -9,4 +9,5 @@ class Constants {
       "/users/getFavouriteHotels/{userId}";
   static const int apiTimeOut = 60 * 1000;
   static const numberOfHotelsToGet = 100;
+  static const int durationOfChangeLanguage = 500;
 }

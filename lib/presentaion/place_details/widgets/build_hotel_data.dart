@@ -25,9 +25,7 @@ class BuildHotelData extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
-        crossAxisAlignment: context.locale == englishLocal
-            ? CrossAxisAlignment.start
-            : CrossAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           BuildHotelImages(hotelData: hotelData),
           const SizedBox(

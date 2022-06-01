@@ -21,9 +21,7 @@ class BuildTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: context.locale == englishLocal
-          ? CrossAxisAlignment.start
-          : CrossAxisAlignment.end,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           label,

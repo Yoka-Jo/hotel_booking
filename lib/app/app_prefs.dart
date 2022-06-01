@@ -1,9 +1,8 @@
 import 'dart:convert';
-
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:hotel_booking/domain/models/models.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../presentaion/resources/language_manager.dart';
 
 const String kPrefsIsLightTheme = "is_light_theme";
@@ -16,27 +15,22 @@ class AppPreferences {
   final SharedPreferences _sharedPreferences;
   AppPreferences(this._sharedPreferences);
 
-  Future<String> getAppLanguage() async {
+  String getAppLanguage() {
     String? language = _sharedPreferences.getString(kPrefsLang);
     if (language != null && language.isNotEmpty) {
       return language;
     } else {
-      return LanguageTyp.english.getValue();
+      return LanguageType.english.getValue();
     }
   }
 
-  Future<void> changeAppLanguage() async {
-    String currentLang = await getAppLanguage();
-    if (currentLang == LanguageTyp.arabic.getValue()) {
-      _sharedPreferences.setString(kPrefsLang, LanguageTyp.english.getValue());
-    } else {
-      _sharedPreferences.setString(kPrefsLang, LanguageTyp.arabic.getValue());
-    }
-  }
+  Future<void> changeAppLanguage(LanguageType languageTyp) async =>
+      await _sharedPreferences.setString(kPrefsLang, languageTyp.getValue());
 
   Future<Locale> getLocal() async {
-    String currentLang = await getAppLanguage();
-    if (currentLang == LanguageTyp.arabic.getValue()) {
+    String currentLang = getAppLanguage();
+    log("This is the get local " + currentLang);
+    if (currentLang == LanguageType.arabic.getValue()) {
       return arabicLocal;
     } else {
       return englishLocal;
@@ -78,7 +72,7 @@ class AppPreferences {
     }
   }
 
-  bool getAppTheme() {
+  bool getAppThemeMode() {
     bool? isLight = _sharedPreferences.getBool(kPrefsIsLightTheme);
     if (isLight != null) {
       return isLight;
@@ -88,12 +82,16 @@ class AppPreferences {
   }
 
   Future<void> changeAppTheme() async {
-    bool appTheme = getAppTheme();
+    bool appTheme = getAppThemeMode();
     if (appTheme == true) {
       await _sharedPreferences.setBool(kPrefsIsLightTheme, false);
     } else {
       await _sharedPreferences.setBool(kPrefsIsLightTheme, true);
     }
+  }
+
+  Future<void> logout() async {
+    await _sharedPreferences.remove(kPrefsUserData);
   }
 
   Future<bool> removeData({

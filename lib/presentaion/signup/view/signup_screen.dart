@@ -71,9 +71,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Scaffold _getContentWidget(BuildContext context) {
     log(DateTime.now().add(const Duration(hours: 5)).toIso8601String());
     return Scaffold(
-      appBar: AppBar(
-        foregroundColor: Colors.black,
-      ),
+      appBar: AppBar(),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: SizedBox(

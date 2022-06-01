@@ -63,9 +63,7 @@ class _LogInScreenState extends State<LogInScreen> {
 
   Scaffold _getContentWidget(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        foregroundColor: Colors.black,
-      ),
+      appBar: AppBar(),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: SizedBox(

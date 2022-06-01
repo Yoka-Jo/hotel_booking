@@ -4,7 +4,7 @@ import 'package:hotel_booking/presentaion/resources/colors_manager.dart';
 
 import 'pages/favourite/favourite_screen.dart';
 import 'pages/home/views/home_screen.dart';
-import 'pages/settings/settings_scree.dart';
+import 'pages/settings/views/settings_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);

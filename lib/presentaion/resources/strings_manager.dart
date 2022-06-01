@@ -36,6 +36,13 @@ class AppStrings {
   static const String address = "address";
   static const String showLocation = "show_location";
   static const String distance = "distance";
+  static const String changeLanguage = "change-language";
+  static const String darkMode = "dark-mode";
+  static const String lightMode = "light-mode";
+  static const String share = "share";
+  static const String arabic = "arabic";
+  static const String english = "english";
+  static const String logout = "logout";
 
   //! Error Handler
   static const String badRequestError = "bad_request_error";
