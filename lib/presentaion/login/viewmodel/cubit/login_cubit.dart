@@ -60,7 +60,7 @@ class LoginCubit extends Cubit<LoginState> {
     emit(LoginValidateInputsState());
   }
 
-  void login(BuildContext context) async {
+  Future<void> login(BuildContext context) async {
     currentState =
         LoadingState(stateRendererType: StateRendererType.popupLoadingState);
     emit(LoginLoadingState());

@@ -43,6 +43,10 @@ class AppStrings {
   static const String arabic = "arabic";
   static const String english = "english";
   static const String logout = "logout";
+  static const String cancel = "cancel";
+  static const String noHotelsFound = "no-hotels-found";
+  static const String addYourFavouriteHotels =
+      "start-adding-hotels-to-favourite";
 
   //! Error Handler
   static const String badRequestError = "bad_request_error";

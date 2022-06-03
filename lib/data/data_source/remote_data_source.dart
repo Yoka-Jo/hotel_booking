@@ -11,6 +11,8 @@ abstract class RemoteDataSource {
       ChangeHotelFavStateRequest addToFavouriteRequest);
   Future<FavouriteHotelsResponse> getFavouriteHotels(
       GetFavHotelsRequest getFavHotelsRequest);
+  Future<HotelsReponse> searchForHotels(
+      SearchForHotelsRequest searchForHotelsRequest);
 }
 
 class RemoteDataSourceImpl implements RemoteDataSource {
@@ -51,5 +53,12 @@ class RemoteDataSourceImpl implements RemoteDataSource {
       GetFavHotelsRequest getFavHotelsRequest) async {
     return await _appServiceClient
         .getFavouriteHotels(getFavHotelsRequest.userId);
+  }
+
+  @override
+  Future<HotelsReponse> searchForHotels(
+      SearchForHotelsRequest searchForHotelsRequest) async {
+    return await _appServiceClient
+        .searchForHotels(searchForHotelsRequest.hotelName);
   }
 }

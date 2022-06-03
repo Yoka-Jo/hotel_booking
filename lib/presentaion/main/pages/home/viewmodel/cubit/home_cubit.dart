@@ -1,6 +1,5 @@
-import 'dart:developer';
-
 import 'package:bloc/bloc.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:hotel_booking/app/app_prefs.dart';
 import 'package:hotel_booking/app/constants.dart';
@@ -8,30 +7,33 @@ import 'package:hotel_booking/app/dependency_injection.dart';
 import 'package:hotel_booking/domain/usecases/change_hotel_fav_state_usecase.dart';
 import 'package:hotel_booking/domain/usecases/get_favourite_hotels_usecase.dart';
 import 'package:hotel_booking/domain/usecases/get_hotels_usecase.dart';
+import 'package:hotel_booking/domain/usecases/search_for_hotels_usecase.dart';
 import 'package:hotel_booking/presentaion/common/state_renderer/state_renderer_impl.dart';
 import 'package:provider/provider.dart';
-
 import '../../../../../../data/network/requests.dart';
 import '../../../../../../domain/models/models.dart';
 import '../../../../../common/state_renderer/cubit/flow_state_cubit.dart';
 import '../../../../../common/state_renderer/state_renderer.dart';
-
+import '../../../../../resources/strings_manager.dart';
 part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
   HomeCubit(this._getHotelsUseCase, this._changeHotelFavStateUseCase,
-      this._getFavouriteHotelsUseCase)
+      this._getFavouriteHotelsUseCase, this._searchForHotelsUseCase)
       : super(HomeInitialState());
   final GetHotelsUseCase _getHotelsUseCase;
   final ChangeHotelFavStateUseCase _changeHotelFavStateUseCase;
   final GetFavouriteHotelsUseCase _getFavouriteHotelsUseCase;
+  final SearchForHotelsUseCase _searchForHotelsUseCase;
 
   final AppPreferences _appPrefs = instance<AppPreferences>();
   static HomeCubit get(BuildContext context) => Provider.of<HomeCubit>(context);
-  Hotels hotels = Hotels(data: [], message: "No Data Yet.");
+  Hotels hotels = Hotels(data: [], message: AppStrings.noHotelsFound.tr());
+  List<HotelData> favouriteHotels = [];
+  List<String> favouriteHotelsIds = [];
   Map<String, dynamic> userData = {};
   FlowState _currentState = ContentState();
-  List<String> favourites = [];
+  bool isSearching = false;
 
   Future<void> getHotels(BuildContext context,
       {int? minAmount, int? maxAmount}) async {
@@ -59,47 +61,94 @@ class HomeCubit extends Cubit<HomeState> {
     },
         //! here we've got the hotels data
         (data) async {
+      await getFavouriteHotels(context);
       hotels = data;
-      log(data.data.length.toString());
       _currentState = ContentState();
       context.read<FlowStateCubit>().setState(_currentState);
-      // emit(HomeGetHotelsSuccessfullyState());
     });
   }
 
   Future<void> getFavouriteHotels(BuildContext context) async {
+    if (favouriteHotels.isNotEmpty) {
+      return;
+    }
     userData = _appPrefs.getUserData();
     var result = await _getFavouriteHotelsUseCase(
         GetFavHotelsRequest(userId: userData["userId"]));
     result.fold(
       (failure) {
-        log(failure.message);
         _currentState =
             ErrorState(StateRendererType.fullScreenErrorState, failure.message);
         context.read<FlowStateCubit>().setState(_currentState);
       },
       (favHotels) {
-        favourites = favHotels.hotels;
-        emit(HomeGetFavouritesSuccessfullyState());
+        // for (int i = 0; i < hotels.data.length; i++) {
+        //   for (var id in favHotels.hotels) {
+        //     favouriteHotels
+        //         .add(hotels.data.firstWhere((hotel) => hotel.id == id));
+        //   }
+        // }
+        favouriteHotelsIds = favHotels.hotels;
       },
     );
   }
 
-  Future<void> changeHotelFavState(BuildContext context, String hotelId) async {
+  Future<void> changeHotelFavState(String hotelId) async {
     var result = await _changeHotelFavStateUseCase(ChangeHotelFavStateRequest(
         userId: userData["userId"], hotelId: hotelId));
     result.fold((failure) {
       emit(HomeFavouriteErrorState());
     }, (data) {
-      if (favourites.contains(hotelId)) {
-        favourites.remove(hotelId);
+      if (favouriteHotelsIds.contains(hotelId)) {
+        favouriteHotels.removeWhere((element) => element.id == hotelId);
+        favouriteHotelsIds.remove(hotelId);
         emit(HomeRemoveFromFavouriteSuccessfullyState());
       } else {
-        favourites.add(hotelId);
+        favouriteHotels
+            .add(hotels.data.firstWhere((element) => element.id == hotelId));
+        favouriteHotelsIds.add(hotelId);
         emit(HomeAddToFavouriteSuccessfullyState());
       }
     });
   }
 
-  bool isFavourite(String hotelId) => favourites.contains(hotelId);
+  Future<void> searchForHotels(BuildContext context, String name) async {
+    if (name.isEmpty) {
+      return;
+    }
+    hotels.data.clear();
+    isSearching = true;
+    emit(HomeSearchLoagingState());
+    //! get hotels data
+    var result =
+        await _searchForHotelsUseCase(SearchForHotelsRequest(hotelName: name));
+    //! check if the result is data or failure
+    result.fold(
+        //! can't get hotels data so current state is error
+        (failure) {
+      _currentState =
+          ErrorState(StateRendererType.popupErrorState, failure.message);
+      context.read<FlowStateCubit>().setState(_currentState);
+    },
+        //! here we've got the hotels data
+        (hotelsData) async {
+      hotels = hotelsData.data.isNotEmpty
+          ? hotelsData
+          : Hotels(data: [], message: AppStrings.noHotelsFound.tr());
+      isSearching = false;
+      emit(HomeSearchSuccessState());
+    });
+  }
+
+  void clearHotels() {
+    hotels = Hotels(data: [], message: AppStrings.noHotelsFound.tr());
+    emit(HomeClearHotelsSuccessState());
+  }
+
+  void clearFavouriteHotels() {
+    favouriteHotels.clear();
+    emit(HomeClearHotelsSuccessState());
+  }
+
+  bool isFavourite(String hotelId) => favouriteHotelsIds.contains(hotelId);
 }

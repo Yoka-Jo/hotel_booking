@@ -116,4 +116,24 @@ class RepositoryImpl implements Repository {
       return Left(ErrorHandler.handle(e).failure);
     }
   }
+
+  @override
+  Future<Either<Failure, Hotels>> searchForHotels(
+      SearchForHotelsRequest hotelName) async {
+    try {
+      final response = await _remoteDataSource.searchForHotels(hotelName);
+      if (response.status == 200) {
+        return Right(response.toDomain());
+      } else {
+        return Left(
+          Failure(
+            code: response.status ?? 0,
+            message: response.message ?? ResponseMessage.defaultt,
+          ),
+        );
+      }
+    } catch (e) {
+      return Left(ErrorHandler.handle(e).failure);
+    }
+  }
 }

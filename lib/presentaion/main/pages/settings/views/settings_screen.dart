@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hotel_booking/presentaion/common/state_renderer/state_renderer.dart';
-import 'package:hotel_booking/presentaion/common/state_renderer/state_renderer_impl.dart';
 import 'package:hotel_booking/presentaion/main/pages/settings/widgets/build_logout_button.dart';
 
 import '../../../../resources/colors_manager.dart';

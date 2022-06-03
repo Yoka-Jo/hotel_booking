@@ -12,4 +12,6 @@ abstract class Repository {
       ChangeHotelFavStateRequest addToFavouriteRequest);
   Future<Either<Failure, FavouriteHotels>> getFavouriteHotels(
       GetFavHotelsRequest getFavHotelsRequest);
+  Future<Either<Failure, Hotels>> searchForHotels(
+      SearchForHotelsRequest hotelName);
 }

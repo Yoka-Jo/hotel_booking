@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hotel_booking/presentaion/common/state_renderer/state_renderer_impl.dart';
 import 'package:hotel_booking/presentaion/login/viewmodel/cubit/login_cubit.dart';
+import 'package:hotel_booking/presentaion/login/widgets/build_login_button.dart';
 import 'package:hotel_booking/presentaion/resources/assets_manager.dart';
 import 'package:hotel_booking/presentaion/resources/strings_manager.dart';
 import '../../../app/app_prefs.dart';
@@ -94,7 +95,7 @@ class _LogInScreenState extends State<LogInScreen> {
                       const SizedBox(
                         height: 30.0,
                       ),
-                      BuildLogInButton()
+                      BuildLogInButton(),
                     ],
                   ),
                 ),

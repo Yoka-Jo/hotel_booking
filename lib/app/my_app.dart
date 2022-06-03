@@ -1,8 +1,5 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:hotel_booking/app/app_prefs.dart';
 import 'package:hotel_booking/app/dependency_injection.dart';
 import 'package:hotel_booking/presentaion/resources/routes_manager.dart';

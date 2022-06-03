@@ -46,3 +46,10 @@ class GetFavHotelsRequest {
     required this.userId,
   });
 }
+
+class SearchForHotelsRequest {
+  final String hotelName;
+  SearchForHotelsRequest({
+    required this.hotelName,
+  });
+}

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../domain/models/models.dart';
-import 'build_favourite_icon.dart';
-import 'build_hotel_image.dart';
-import 'build_hotel_name.dart';
+import '../../../widgets/build_favourite_icon.dart';
+import '../../../widgets/build_hotel_image.dart';
+import '../../../widgets/build_hotel_name.dart';
 
 class BuildPlacesWidget extends StatelessWidget {
   const BuildPlacesWidget({
@@ -30,8 +30,17 @@ class BuildPlacesWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Stack(alignment: Alignment.topRight, children: [
-                  BuildHotelmage(hotelData: hotels[i]),
-                  BuildFavouriteIcon(hotelId: hotels[i].id)
+                  SizedBox(
+                      width: 150,
+                      height: 180,
+                      child: BuildHotelmage(
+                        hotelData: hotels[i],
+                        borderRadius: 8.0,
+                      )),
+                  BuildFavouriteIcon(
+                    hotelId: hotels[i].id,
+                    borderRadius: 8.0,
+                  )
                 ]),
                 BuildHotelName(hotelName: hotels[i].name)
               ],

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Hotel Booking</string>
+    <string name="facebook_app_id">437418691082016</string>
+    <string name="fb_login_protocol_scheme">fb437418691082016</string>
+    <string name="facebook_client_token">86a2e36025a74f69c71d09f38776ccaa</string>
+</resources>
+
+

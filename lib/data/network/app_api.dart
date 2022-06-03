@@ -29,4 +29,7 @@ abstract class AppServiceClient {
   @GET(Constants.getFavouriteHotelsPath)
   Future<FavouriteHotelsResponse> getFavouriteHotels(
       @Path("userId") String userId);
+
+  @GET(Constants.searchForHotels)
+  Future<HotelsReponse> searchForHotels(@Query("hotelName") String query);
 }

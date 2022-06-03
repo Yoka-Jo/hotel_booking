@@ -21,7 +21,6 @@ class BuildLogInButton extends StatelessWidget {
           ),
       onPressed: LoginCubit.get(context).areInputsValid
           ? () => LoginCubit.get(context)..login(context)
-          // ..autoLogOut(context)
           : null,
       child: Text(
         AppStrings.signIn.tr(),

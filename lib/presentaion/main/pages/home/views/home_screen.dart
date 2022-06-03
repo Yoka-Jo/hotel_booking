@@ -7,6 +7,7 @@ import 'package:hotel_booking/presentaion/main/pages/home/viewmodel/cubit/home_c
 import 'package:hotel_booking/presentaion/resources/strings_manager.dart';
 
 import '../../../../common/state_renderer/cubit/flow_state_cubit.dart';
+import '../../../../resources/colors_manager.dart';
 import '../widgets/build_places_widget.dart';
 import '../widgets/build_search_widget.dart';
 import '../widgets/build_welcome_widget.dart';
@@ -23,9 +24,8 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    context.read<HomeCubit>()
-      ..getFavouriteHotels(context)
-      ..getHotels(context);
+    context.read<HomeCubit>().getHotels(context);
+    // ..getFavouriteHotels(context);
   }
 
   @override
@@ -35,8 +35,10 @@ class _HomeScreenState extends State<HomeScreen> {
         return state.currentState.getScreenWidget(
           context,
           _getContentWidget(context),
-          () async {
-            await context.read<HomeCubit>().getHotels(context);
+          () {
+            context.read<HomeCubit>()
+              ..getHotels(context)
+              ..getFavouriteHotels(context);
           },
         );
       },
@@ -80,7 +82,15 @@ class _HomeScreenState extends State<HomeScreen> {
                     const SizedBox(
                       height: 25,
                     ),
-                    BuildPlacesWidget(hotels: hotels)
+                    if (!cubit.isSearching)
+                      BuildPlacesWidget(hotels: hotels)
+                    else
+                      const Padding(
+                        padding: EdgeInsets.only(top: 50.0),
+                        child: Center(
+                            child: CircularProgressIndicator(
+                                color: AppColors.primary)),
+                      )
                   ],
                 ),
               ),

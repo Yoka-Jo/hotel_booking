@@ -127,7 +127,7 @@ class _BuildChangeLanguaeState extends State<BuildChangeLanguae>
               backgroundColor: MaterialStateProperty.all<Color>(
                   currentLang == languageTyp
                       ? AppColors.primary
-                      : Colors.black)),
+                      : Colors.white)),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

@@ -13,6 +13,7 @@ class BuildBodyText extends StatelessWidget {
     return Text(
       bodyText,
       style: Theme.of(context).textTheme.displayMedium,
+      textAlign: TextAlign.left,
     );
   }
 }

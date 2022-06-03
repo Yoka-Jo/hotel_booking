@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hotel_booking/domain/usecases/change_hotel_fav_state_usecase.dart';
 import 'package:hotel_booking/domain/usecases/get_hotels_usecase.dart';
+import 'package:hotel_booking/domain/usecases/search_for_hotels_usecase.dart';
 import 'package:hotel_booking/presentaion/auth_type/viewmodel/cubit/authentication_cubit.dart';
 import 'package:hotel_booking/presentaion/main/pages/home/viewmodel/cubit/home_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -63,9 +64,7 @@ void initSignUpModule() {
 }
 
 void initHomeModule() {
-  if (!GetIt.I.isRegistered<GetHotelsUseCase>() &&
-      !GetIt.I.isRegistered<ChangeHotelFavStateUseCase>() &&
-      !GetIt.I.isRegistered<ChangeHotelFavStateUseCase>()) {
+  if (!GetIt.I.isRegistered<GetHotelsUseCase>()) {
     instance
         .registerFactory<GetHotelsUseCase>(() => GetHotelsUseCase(instance()));
 
@@ -75,7 +74,10 @@ void initHomeModule() {
     instance.registerFactory<ChangeHotelFavStateUseCase>(
         () => ChangeHotelFavStateUseCase(instance()));
 
+    instance.registerFactory<SearchForHotelsUseCase>(
+        () => SearchForHotelsUseCase(instance()));
+
     instance.registerFactory<HomeCubit>(
-        () => HomeCubit(instance(), instance(), instance()));
+        () => HomeCubit(instance(), instance(), instance(), instance()));
   }
 }

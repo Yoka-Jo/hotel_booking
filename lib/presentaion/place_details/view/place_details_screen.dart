@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:hotel_booking/domain/models/models.dart';
 import '../widgets/build_hotel_data.dart';
-import '../widgets/build_hotel_image.dart';
+import '../widgets/build_hotel_details_image.dart';
 
 class PlaceDetailsScreen extends StatelessWidget {
   const PlaceDetailsScreen({
@@ -22,7 +22,7 @@ class PlaceDetailsScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            BuildHotelImage(hotelData: hotelData),
+            BuildHotelDetailsImage(hotelData: hotelData),
             BuildHotelData(hotelData: hotelData)
           ],
         ),

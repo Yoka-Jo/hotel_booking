@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../domain/models/models.dart';
 
-class BuildHotelImage extends StatelessWidget {
-  const BuildHotelImage({
+class BuildHotelDetailsImage extends StatelessWidget {
+  const BuildHotelDetailsImage({
     Key? key,
     required this.hotelData,
   }) : super(key: key);

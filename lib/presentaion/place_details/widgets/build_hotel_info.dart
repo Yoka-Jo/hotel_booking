@@ -18,13 +18,15 @@ class BuildHotelInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: isStringEnglish
-          ? CrossAxisAlignment.start
-          : context.locale == englishLocal
-              ? CrossAxisAlignment.start
-              : CrossAxisAlignment.end,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        BuildTitle(title: title),
+        Align(
+            alignment: isStringEnglish
+                ? Alignment.centerLeft
+                : context.locale == arabicLocal
+                    ? Alignment.bottomRight
+                    : Alignment.centerLeft,
+            child: BuildTitle(title: title)),
         const SizedBox(
           height: 8.0,
         ),

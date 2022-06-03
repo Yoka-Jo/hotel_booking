@@ -4,7 +4,6 @@ import 'package:hotel_booking/presentaion/common/components/build_divider.dart';
 import 'package:hotel_booking/presentaion/place_details/widgets/build_body_text.dart';
 import 'package:hotel_booking/presentaion/place_details/widgets/build_hotel_info.dart';
 import 'package:hotel_booking/presentaion/place_details/widgets/build_title.dart';
-import 'package:hotel_booking/presentaion/resources/language_manager.dart';
 import 'package:hotel_booking/presentaion/resources/strings_manager.dart';
 
 import '../../../domain/models/models.dart';
