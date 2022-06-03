@@ -27,8 +27,15 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => FlowStateCubit(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => FlowStateCubit(),
+        ),
+        // BlocProvider(
+        //   create: (context) => instance<AuthenticationCubit>(),
+        // ),
+      ],
       child: MaterialApp(
         localizationsDelegates: context.localizationDelegates,
         supportedLocales: context.supportedLocales,

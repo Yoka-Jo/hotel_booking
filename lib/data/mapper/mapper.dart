@@ -31,6 +31,7 @@ extension HotelDataResponseMapper on HotelDataResponse? {
       desc: this?.desc.orEmpty() ?? "",
       type: this?.type.orEmpty() ?? "",
       city: this?.city.orEmpty() ?? "",
+      url: this?.url.orEmpty() ?? "",
       address: this?.address.orEmpty() ?? "",
       distance: this?.distance.orEmpty() ?? "",
       photos: this?.photos?.map((photo) => photo.orEmpty()).toList() ?? [],

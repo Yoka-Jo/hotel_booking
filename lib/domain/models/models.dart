@@ -42,6 +42,7 @@ class HotelData {
   final String type;
   final String city;
   final String address;
+  final String url;
   final String distance;
   final double lat;
   final double long;
@@ -57,6 +58,7 @@ class HotelData {
     required this.type,
     required this.city,
     required this.address,
+    required this.url,
     required this.distance,
     required this.photos,
     required this.cheapestPrice,

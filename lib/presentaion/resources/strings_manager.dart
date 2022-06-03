@@ -47,6 +47,7 @@ class AppStrings {
   static const String noHotelsFound = "no-hotels-found";
   static const String addYourFavouriteHotels =
       "start-adding-hotels-to-favourite";
+  static const String clickForDetails = "click-for-details";
 
   //! Error Handler
   static const String badRequestError = "bad_request_error";

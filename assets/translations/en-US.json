@@ -44,6 +44,7 @@
     "logout": "Logout",
     "cancel": "Cancel",
     "no-hotels-found": "No Hotels Found",
+    "click-for-details": "Click For More Details",
     "start-adding-hotels-to-favourite": "Start Adding Your Favourite Hotels Now",
     "bad_request_error": "bad request. try again later",
     "forbidden_error": "forbidden request. try again later",

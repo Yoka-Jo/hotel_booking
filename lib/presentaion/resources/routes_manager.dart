@@ -11,6 +11,7 @@ import 'package:hotel_booking/presentaion/place_details/view/place_details_scree
 import 'package:hotel_booking/presentaion/resources/strings_manager.dart';
 import 'package:hotel_booking/presentaion/signup/view/signup_screen.dart';
 import 'package:hotel_booking/presentaion/splash/splash_screen.dart';
+import 'package:hotel_booking/presentaion/webview/view/webview_screen.dart';
 
 import '../../app/dependency_injection.dart';
 import '../login/viewmodel/cubit/login_cubit.dart';
@@ -26,6 +27,7 @@ class Routes {
   static const String mainRoute = "/main";
   static const String placeDetailsRoute = "/place-details";
   static const String mapRoute = "/map";
+  static const String webViewRoute = "/web-view";
 }
 
 class RoutesGenerator {
@@ -62,6 +64,14 @@ class RoutesGenerator {
       case Routes.authTypeRoute:
         {
           return MaterialPageRoute(builder: (_) => const AuthTypeScreen());
+        }
+      case Routes.webViewRoute:
+        {
+          final String url = settings.arguments as String;
+          return MaterialPageRoute(
+              builder: (_) => WebViewScreen(
+                    url: url,
+                  ));
         }
       case Routes.mainRoute:
         {

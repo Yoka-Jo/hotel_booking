@@ -59,6 +59,8 @@ class HotelDataResponse {
   final String? city;
   @JsonKey(name: "address")
   final String? address;
+  @JsonKey(name: "url")
+  final String? url;
   @JsonKey(name: "distance")
   final String? distance;
   @JsonKey(name: "photos")
@@ -78,6 +80,7 @@ class HotelDataResponse {
     this.city,
     this.address,
     this.distance,
+    this.url,
     this.photos,
     this.cheapestPrice,
     this.lat,

@@ -3,7 +3,6 @@ import 'package:get_it/get_it.dart';
 import 'package:hotel_booking/domain/usecases/change_hotel_fav_state_usecase.dart';
 import 'package:hotel_booking/domain/usecases/get_hotels_usecase.dart';
 import 'package:hotel_booking/domain/usecases/search_for_hotels_usecase.dart';
-import 'package:hotel_booking/presentaion/auth_type/viewmodel/cubit/authentication_cubit.dart';
 import 'package:hotel_booking/presentaion/main/pages/home/viewmodel/cubit/home_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../data/data_source/remote_data_source.dart';
@@ -15,6 +14,7 @@ import '../domain/usecases/get_favourite_hotels_usecase.dart';
 import '../domain/usecases/login_usecase.dart';
 import '../domain/usecases/signup_usecase.dart';
 import '../presentaion/auth_type/authentication/auto_authentication.dart';
+import '../presentaion/auth_type/viewmodel/helpers/authentication_helper.dart';
 import '../presentaion/login/viewmodel/cubit/login_cubit.dart';
 import '../presentaion/signup/viewmodel/cubit/signup_cubit.dart';
 import 'app_prefs.dart';
@@ -43,8 +43,8 @@ Future<void> initAppModule() async {
   instance.registerFactory<AutoAuthentication>(
       () => AutoAuthentication(instance()));
 
-  instance.registerFactory<AuthenticationCubit>(
-      () => AuthenticationCubit(instance()));
+  instance.registerFactory<AuthenticationHelper>(
+      () => AuthenticationHelper(instance()));
 }
 
 void initLoginModule() {

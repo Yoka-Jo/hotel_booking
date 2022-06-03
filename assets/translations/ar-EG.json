@@ -44,6 +44,7 @@
     "logout": "تسجيل الخروج",
     "cancel": "الغاء",
     "no-hotels-found": "لا يوجد فنادق لعرضها",
+    "click-for-details": "اضغط لمزيد من التفاصيل",
     "start-adding-hotels-to-favourite": "ابدأ اضافة فنادقك المفضلة الان",
     "bad_request_error": "طلب غير صالح. حاول مرة أخرى لاحقًا",
     "forbidden_error": "طلب محظور. حاول مرة أخرى لاحقًا",

@@ -1,13 +1,14 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hotel_booking/presentaion/auth_type/viewmodel/helpers/authentication_helper.dart';
 import 'package:hotel_booking/presentaion/common/components/show_toast.dart';
 import 'package:hotel_booking/presentaion/common/state_renderer/state_renderer_impl.dart';
 import 'package:hotel_booking/presentaion/main/pages/home/viewmodel/cubit/home_cubit.dart';
 import 'package:hotel_booking/presentaion/resources/strings_manager.dart';
 
+import '../../../../../app/dependency_injection.dart';
 import '../../../../common/state_renderer/cubit/flow_state_cubit.dart';
-import '../../../../resources/colors_manager.dart';
 import '../widgets/build_places_widget.dart';
 import '../widgets/build_search_widget.dart';
 import '../widgets/build_welcome_widget.dart';
@@ -20,10 +21,13 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final AuthenticationHelper _auth = instance<AuthenticationHelper>();
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   void initState() {
     super.initState();
+    _auth.autoLogout(context);
     context.read<HomeCubit>().getHotels(context);
     // ..getFavouriteHotels(context);
   }
@@ -87,9 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     else
                       const Padding(
                         padding: EdgeInsets.only(top: 50.0),
-                        child: Center(
-                            child: CircularProgressIndicator(
-                                color: AppColors.primary)),
+                        child: Center(child: CircularProgressIndicator()),
                       )
                   ],
                 ),

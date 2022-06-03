@@ -9,7 +9,10 @@ ThemeData getAppTheme({required bool isLight}) {
       isLight ? AppColors.lightTextColor : AppColors.darkTextColor;
   return ThemeData(
     brightness: isLight ? Brightness.light : Brightness.dark,
+    progressIndicatorTheme:
+        const ProgressIndicatorThemeData(color: AppColors.primary),
     primaryColor: AppColors.primary,
+    backgroundColor: isLight ? Colors.white : Colors.black,
     disabledColor: isLight ? AppColors.grey : Colors.white24,
     splashColor: AppColors.primary,
     scaffoldBackgroundColor: isLight ? Colors.white : Colors.black12,

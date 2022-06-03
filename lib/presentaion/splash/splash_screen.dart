@@ -3,9 +3,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hotel_booking/app/app_prefs.dart';
-import 'package:hotel_booking/presentaion/auth_type/viewmodel/cubit/authentication_cubit.dart';
 
 import '../../app/dependency_injection.dart';
+import '../auth_type/viewmodel/helpers/authentication_helper.dart';
 import '../resources/assets_manager.dart';
 import '../resources/routes_manager.dart';
 
@@ -19,7 +19,7 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   late Timer _timer;
   final AppPreferences _appPrefs = instance<AppPreferences>();
-  final AuthenticationCubit _auth = instance<AuthenticationCubit>();
+  final AuthenticationHelper _auth = instance<AuthenticationHelper>();
 
   void _startDelay() {
     _timer = Timer(const Duration(seconds: 2), _goNext);

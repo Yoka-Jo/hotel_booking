@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hotel_booking/presentaion/main/pages/settings/widgets/build_logout_button.dart';
 
-import '../../../../resources/colors_manager.dart';
 import '../helpers/dynamic_link_helper.dart';
 import '../widgets/build_change_app_theme.dart';
 import '../widgets/build_change_language.dart';
@@ -46,9 +45,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 );
               } else {
                 return const Center(
-                  child: CircularProgressIndicator(
-                    color: AppColors.primary,
-                  ),
+                  child: CircularProgressIndicator(),
                 );
               }
             }));

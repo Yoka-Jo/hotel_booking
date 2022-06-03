@@ -3,8 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hotel_booking/data/network/requests.dart';
 import 'package:hotel_booking/domain/models/models.dart';
-import 'package:hotel_booking/presentaion/auth_type/viewmodel/cubit/authentication_cubit.dart';
-import '../../../../app/dependency_injection.dart';
 import '../../../../app/functions.dart';
 import '../../../../domain/usecases/login_usecase.dart';
 import '../../../common/freezed/freezed_data_classes.dart';
@@ -19,7 +17,6 @@ class LoginCubit extends Cubit<LoginState> {
     this._useCase,
   ) : super(LoginInitial());
 
-  final AuthenticationCubit _auth = instance<AuthenticationCubit>();
   final LoginUseCase _useCase;
 
   static LoginCubit get(BuildContext context) =>
@@ -43,7 +40,7 @@ class LoginCubit extends Cubit<LoginState> {
   }
 
   void setPassword(String password) {
-    if (password.length >= 5) {
+    if (password.length >= 6) {
       loginObject = loginObject.copyWith(password: password);
       errorPassword = null;
     } else {
@@ -80,8 +77,4 @@ class LoginCubit extends Cubit<LoginState> {
   }
 
   void noChangeInFlowState() => currentState = ContentState();
-
-  void autoLogOut(BuildContext context) {
-    _auth.autoLogout();
-  }
 }

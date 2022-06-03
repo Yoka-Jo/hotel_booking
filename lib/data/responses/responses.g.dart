@@ -62,6 +62,7 @@ HotelDataResponse _$HotelDataResponseFromJson(Map<String, dynamic> json) =>
       city: json['city'] as String?,
       address: json['address'] as String?,
       distance: json['distance'] as String?,
+      url: json['url'] as String?,
       photos:
           (json['photos'] as List<dynamic>?)?.map((e) => e as String).toList(),
       cheapestPrice: json['cheapestPrice'] as int?,
@@ -78,6 +79,7 @@ Map<String, dynamic> _$HotelDataResponseToJson(HotelDataResponse instance) =>
       'type': instance.type,
       'city': instance.city,
       'address': instance.address,
+      'url': instance.url,
       'distance': instance.distance,
       'photos': instance.photos,
       'cheapestPrice': instance.cheapestPrice,
