@@ -63,6 +63,14 @@ class HomeCubit extends Cubit<HomeState> {
         (data) async {
       await getFavouriteHotels(context);
       hotels = data;
+
+      for (int i = 0; i < hotels.data.length; i++) {
+        for (var id in favouriteHotelsIds) {
+          if (id == hotels.data[i].id) {
+            favouriteHotels.add(hotels.data[i]);
+          }
+        }
+      }
       _currentState = ContentState();
       context.read<FlowStateCubit>().setState(_currentState);
     });
@@ -82,12 +90,6 @@ class HomeCubit extends Cubit<HomeState> {
         context.read<FlowStateCubit>().setState(_currentState);
       },
       (favHotels) {
-        // for (int i = 0; i < hotels.data.length; i++) {
-        //   for (var id in favHotels.hotels) {
-        //     favouriteHotels
-        //         .add(hotels.data.firstWhere((hotel) => hotel.id == id));
-        //   }
-        // }
         favouriteHotelsIds = favHotels.hotels;
       },
     );
