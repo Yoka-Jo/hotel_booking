@@ -4,11 +4,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hotel_booking/presentaion/auth_type/viewmodel/helpers/authentication_helper.dart';
 import 'package:hotel_booking/presentaion/common/components/show_toast.dart';
 import 'package:hotel_booking/presentaion/common/state_renderer/state_renderer_impl.dart';
-import 'package:hotel_booking/presentaion/main/pages/home/viewmodel/cubit/home_cubit.dart';
 import 'package:hotel_booking/presentaion/resources/strings_manager.dart';
 
 import '../../../../../app/dependency_injection.dart';
 import '../../../../common/state_renderer/cubit/flow_state_cubit.dart';
+import '../../../cubit/main_cubit.dart';
 import '../widgets/build_places_widget.dart';
 import '../widgets/build_search_widget.dart';
 import '../widgets/build_welcome_widget.dart';
@@ -28,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     _auth.autoLogout(context);
-    context.read<HomeCubit>().getHotels(context);
+    context.read<MainCubit>().getHotels(context);
     // ..getFavouriteHotels(context);
   }
 
@@ -40,7 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
           context,
           _getContentWidget(context),
           () {
-            context.read<HomeCubit>()
+            context.read<MainCubit>()
               ..getHotels(context)
               ..getFavouriteHotels(context);
           },
@@ -56,7 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        body: BlocConsumer<HomeCubit, HomeState>(
+        body: BlocConsumer<MainCubit, HomeState>(
           listener: (context, state) {
             if (state is HomeAddToFavouriteSuccessfullyState) {
               showToast(AppStrings.addHotelToFav.tr(), ToastState.success);
@@ -67,7 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
             }
           },
           builder: (context, state) {
-            final cubit = HomeCubit.get(context);
+            final cubit = MainCubit.get(context);
             final hotels = cubit.hotels.data;
             return SafeArea(
               child: Padding(

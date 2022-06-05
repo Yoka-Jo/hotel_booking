@@ -2,11 +2,11 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../resources/strings_manager.dart';
-import '../cubit/login_cubit.dart';
+import '../cubit/reset_password_cubit.dart';
 
-class BuildLogInButton extends StatelessWidget {
+class BuildResetPasswordButton extends StatelessWidget {
   // ignore: prefer_const_constructors_in_immutables
-  BuildLogInButton({
+  BuildResetPasswordButton({
     Key? key,
   }) : super(key: key);
 
@@ -15,16 +15,16 @@ class BuildLogInButton extends StatelessWidget {
     return ElevatedButton(
       style: Theme.of(context).elevatedButtonTheme.style!.copyWith(
             backgroundColor: MaterialStateProperty.all<Color>(
-              LoginCubit.get(context).areInputsValid
+              ResetPasswordCubit.get(context).areInputsValid
                   ? Theme.of(context).primaryColor
                   : Theme.of(context).disabledColor,
             ),
           ),
-      onPressed: LoginCubit.get(context).areInputsValid
-          ? () => context.read<LoginCubit>().login(context)
+      onPressed: ResetPasswordCubit.get(context).areInputsValid
+          ? () => context.read<ResetPasswordCubit>().resetPassword(context)
           : null,
       child: Text(
-        AppStrings.signIn.tr(),
+        AppStrings.reset.tr(),
         style: Theme.of(context).textTheme.titleMedium,
       ),
     );

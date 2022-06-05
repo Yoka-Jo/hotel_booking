@@ -89,3 +89,17 @@ class Location {
 
   Location({required this.longitude, required this.latitude});
 }
+
+class ForgotPassword {
+  final String id;
+  final String token;
+  ForgotPassword({
+    required this.id,
+    required this.token,
+  });
+}
+
+class ResetPassword {
+  final String message;
+  ResetPassword({required this.message});
+}

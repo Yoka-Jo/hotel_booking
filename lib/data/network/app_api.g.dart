@@ -10,7 +10,7 @@ part of 'app_api.dart';
 
 class _AppServiceClient implements AppServiceClient {
   _AppServiceClient(this._dio, {this.baseUrl}) {
-    baseUrl ??= 'https://yoka-hotel-booking.herokuapp.com/api';
+    baseUrl ??= 'http://192.168.1.5:3000/api';
   }
 
   final Dio _dio;
@@ -117,6 +117,38 @@ class _AppServiceClient implements AppServiceClient {
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = HotelsReponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<ForgotPasswordResponse> forgotPassword(email, dynamicLink) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = {'email': email, 'link': dynamicLink};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<ForgotPasswordResponse>(
+            Options(method: 'POST', headers: _headers, extra: _extra)
+                .compose(_dio.options, '/auth/forgotPassword',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = ForgotPasswordResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<ResetPasswordResponse> resetPassword(id, token, password) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = {'password': password};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<ResetPasswordResponse>(
+            Options(method: 'POST', headers: _headers, extra: _extra)
+                .compose(_dio.options, '/auth/resetPassword/${id}/${token}',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = ResetPasswordResponse.fromJson(_result.data!);
     return value;
   }
 

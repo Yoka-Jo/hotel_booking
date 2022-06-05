@@ -1,10 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-
-import 'package:hotel_booking/presentaion/login/viewmodel/cubit/login_cubit.dart';
-
 import '../../common/components/build_text_from_field.dart';
 import '../../resources/strings_manager.dart';
+import '../cubit/login_cubit.dart';
 
 class BuildLogInFields extends StatelessWidget {
   final TextEditingController emailController;

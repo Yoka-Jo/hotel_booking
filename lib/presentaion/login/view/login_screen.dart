@@ -4,13 +4,13 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hotel_booking/presentaion/common/state_renderer/state_renderer_impl.dart';
-import 'package:hotel_booking/presentaion/login/viewmodel/cubit/login_cubit.dart';
 import 'package:hotel_booking/presentaion/login/widgets/build_login_button.dart';
 import 'package:hotel_booking/presentaion/resources/assets_manager.dart';
 import 'package:hotel_booking/presentaion/resources/strings_manager.dart';
 import '../../../app/app_prefs.dart';
 import '../../../app/dependency_injection.dart';
 import '../../resources/routes_manager.dart';
+import '../cubit/login_cubit.dart';
 import '../widgets/build_forget_password.dart';
 import '../widgets/build_login_button.dart';
 import '../widgets/build_login_fields.dart';
@@ -30,10 +30,10 @@ class _LogInScreenState extends State<LogInScreen> {
 
   void _bind() {
     _emailEditingcontroller.addListener(() {
-      LoginCubit.get(context).setEmail(_emailEditingcontroller.text);
+      context.read<LoginCubit>().setEmail(_emailEditingcontroller.text);
     });
     _passwordEditingcontroller.addListener(() {
-      LoginCubit.get(context).setPassword(_passwordEditingcontroller.text);
+      context.read<LoginCubit>().setPassword(_passwordEditingcontroller.text);
     });
   }
 
@@ -79,25 +79,24 @@ class _LogInScreenState extends State<LogInScreen> {
                 AppStrings.welcomeBadk,
                 style: Theme.of(context).textTheme.titleLarge,
               ).tr(),
-              Form(
-                child: Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      BuildLogInFields(
-                          emailController: _emailEditingcontroller,
-                          passwordController: _passwordEditingcontroller),
-                      const SizedBox(
-                        height: 8.0,
-                      ),
-                      const BuildForgetPassword(),
-                      const SizedBox(
-                        height: 30.0,
-                      ),
-                      BuildLogInButton(),
-                    ],
-                  ),
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    BuildLogInFields(
+                      emailController: _emailEditingcontroller,
+                      passwordController: _passwordEditingcontroller,
+                    ),
+                    const SizedBox(
+                      height: 8.0,
+                    ),
+                    const BuildForgetPassword(),
+                    const SizedBox(
+                      height: 30.0,
+                    ),
+                    BuildLogInButton(),
+                  ],
                 ),
               )
             ],

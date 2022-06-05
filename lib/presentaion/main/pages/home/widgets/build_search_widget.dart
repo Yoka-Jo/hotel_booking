@@ -2,11 +2,11 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hotel_booking/app/functions.dart';
-import 'package:hotel_booking/presentaion/main/pages/home/viewmodel/cubit/home_cubit.dart';
 import 'package:hotel_booking/presentaion/resources/language_manager.dart';
 import 'package:hotel_booking/presentaion/resources/strings_manager.dart';
 import 'dart:ui' as ui;
 import '../../../../resources/colors_manager.dart';
+import '../../../cubit/main_cubit.dart';
 
 class BuildSearchWidget extends StatefulWidget {
   final GlobalKey<ScaffoldState> scaffoldKey;
@@ -71,7 +71,7 @@ class _BuildSearchWidgetState extends State<BuildSearchWidget> {
             focusNode: focusNode,
             onChanged: (value) {
               widget.homeContext
-                  .read<HomeCubit>()
+                  .read<MainCubit>()
                   .searchForHotels(widget.homeContext, value.trim());
             },
             style: Theme.of(context)
@@ -142,7 +142,7 @@ class _BuildSearchWidgetState extends State<BuildSearchWidget> {
       child: ElevatedButton(
         onPressed: () {
           Navigator.of(context).pop();
-          widget.homeContext.read<HomeCubit>().getHotels(
+          widget.homeContext.read<MainCubit>().getHotels(
                 widget.homeContext,
                 minAmount: _minPriceController.text.isNotEmpty
                     ? int.tryParse(_minPriceController.text)
@@ -201,9 +201,9 @@ class _BuildSearchWidgetState extends State<BuildSearchWidget> {
                     const BorderSide(color: AppColors.red, width: 1.5))),
             onPressed: () {
               focusNode.unfocus();
-              widget.homeContext.read<HomeCubit>().clearHotels();
-              widget.homeContext.read<HomeCubit>().clearFavouriteHotels();
-              widget.homeContext.read<HomeCubit>()
+              widget.homeContext.read<MainCubit>().clearHotels();
+              widget.homeContext.read<MainCubit>().clearFavouriteHotels();
+              widget.homeContext.read<MainCubit>()
                 ..getHotels(widget.homeContext)
                 ..getFavouriteHotels(widget.homeContext);
             },

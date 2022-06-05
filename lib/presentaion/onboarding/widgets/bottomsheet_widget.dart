@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:hotel_booking/app/app_prefs.dart';
 import 'package:hotel_booking/app/functions.dart';
-import '../../../app/dependency_injection.dart';
 import '../../resources/colors_manager.dart';
-import '../../resources/routes_manager.dart';
 
 class BottomSheetWidget extends StatelessWidget {
-  final AppPreferences _appPrefs = instance<AppPreferences>();
   final int currentIndex;
-  BottomSheetWidget({
+  const BottomSheetWidget({
     Key? key,
     required this.currentIndex,
   }) : super(key: key);
@@ -18,37 +14,12 @@ class BottomSheetWidget extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 30.0),
       color: isLightTheme(context) ? Colors.white : Colors.black,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          InkWell(
-            onTap: () async {
-              await _appPrefs.saveIsOnBoardingScreenViewed();
-              Navigator.of(context).pushReplacementNamed(Routes.authTypeRoute);
-            },
-            child: const CircleAvatar(
-              radius: 30,
-              backgroundColor: AppColors.primary,
-              child: Center(
-                  child: Icon(
-                Icons.arrow_forward_ios,
-                color: Colors.white,
-                size: 30,
-              )),
-            ),
-          ),
-          const SizedBox(
-            height: 25,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: List.generate(
-              3,
-              (index) => _getPropperCircle(index),
-            ),
-          ),
-        ],
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: List.generate(
+          3,
+          (index) => _getPropperCircle(index),
+        ),
       ),
     );
   }

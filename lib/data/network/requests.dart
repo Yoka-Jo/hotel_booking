@@ -53,3 +53,23 @@ class SearchForHotelsRequest {
     required this.hotelName,
   });
 }
+
+class ForgotPasswordRequest {
+  final String email;
+  final String dynamicLink;
+  ForgotPasswordRequest({
+    required this.email,
+    required this.dynamicLink,
+  });
+}
+
+class ResetPasswordRequest {
+  final String id;
+  final String password;
+  final String token;
+  ResetPasswordRequest({
+    required this.id,
+    required this.password,
+    required this.token,
+  });
+}

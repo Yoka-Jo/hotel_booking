@@ -32,4 +32,17 @@ abstract class AppServiceClient {
 
   @GET(Constants.searchForHotels)
   Future<HotelsReponse> searchForHotels(@Query("hotelName") String query);
+
+  @POST(Constants.forgotPasswordPath)
+  Future<ForgotPasswordResponse> forgotPassword(
+    @Field("email") String email,
+    @Field("link") String dynamicLink,
+  );
+
+  @POST(Constants.resetPasswordPath)
+  Future<ResetPasswordResponse> resetPassword(
+    @Path("id") String id,
+    @Path("token") String token,
+    @Field("password") String password,
+  );
 }

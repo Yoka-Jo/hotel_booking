@@ -1,11 +1,13 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:hotel_booking/presentaion/resources/colors_manager.dart';
 import '../helpers/location_helper.dart';
 import '../widgets/build_map_widget.dart';
 
 class MapScreen extends StatefulWidget {
-  const MapScreen({Key? key, required this.longitude, required this.latitude}) : super(key: key);
+  const MapScreen({Key? key, required this.longitude, required this.latitude})
+      : super(key: key);
   final double longitude;
   final double latitude;
 
@@ -26,7 +28,7 @@ class _MapScreenState extends State<MapScreen> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration.zero, ()async{
+    Future.delayed(Duration.zero, () async {
       await LocationHelper.enableLocation();
     });
     _cameraPosition = CameraPosition(
@@ -47,7 +49,7 @@ class _MapScreenState extends State<MapScreen> {
       floatingActionButton: Container(
         margin: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 30.0),
         child: FloatingActionButton(
-          backgroundColor: Colors.blue,
+          backgroundColor: AppColors.primary,
           onPressed: _goToMyCurrentLocation,
           child: const Icon(
             Icons.place,

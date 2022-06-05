@@ -5,7 +5,10 @@ import 'package:hotel_booking/presentaion/resources/assets_manager.dart';
 import 'package:hotel_booking/presentaion/resources/colors_manager.dart';
 import 'package:hotel_booking/presentaion/resources/strings_manager.dart';
 
+import '../../app/app_prefs.dart';
+import '../../app/dependency_injection.dart';
 import '../../domain/models/models.dart';
+import '../resources/routes_manager.dart';
 import 'widgets/bottomsheet_widget.dart';
 
 class OnBoardingScreen extends StatefulWidget {
@@ -16,6 +19,7 @@ class OnBoardingScreen extends StatefulWidget {
 }
 
 class _OnBoardingScreenState extends State<OnBoardingScreen> {
+  final AppPreferences _appPrefs = instance<AppPreferences>();
   int currentIndex = 0;
 
   final List<OnBoardingData> onboardingList = [
@@ -42,6 +46,28 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
       appBar: AppBar(
         systemOverlayStyle: Theme.of(context).appBarTheme.systemOverlayStyle,
         leading: const SizedBox.shrink(),
+        actions: [
+          Visibility(
+            visible: currentIndex == onboardingList.length - 1,
+            child: TextButton(
+              onPressed: () async {
+                await _appPrefs.saveIsOnBoardingScreenViewed();
+                Navigator.of(context)
+                    .pushReplacementNamed(Routes.authTypeRoute);
+              },
+              child: Text(
+                AppStrings.next.tr(),
+                style: Theme.of(context)
+                    .textTheme
+                    .displayLarge!
+                    .copyWith(color: AppColors.primary),
+              ),
+            ),
+          ),
+          const SizedBox(
+            width: 20.0,
+          ),
+        ],
       ),
       body: PageView.builder(
         physics: const BouncingScrollPhysics(),

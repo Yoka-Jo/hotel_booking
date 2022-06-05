@@ -126,3 +126,41 @@ class FavouriteHotelsResponse extends BaseResponse {
 
   Map<String, dynamic> toJson() => _$FavouriteHotelsResponseToJson(this);
 }
+
+@JsonSerializable()
+class ForgotPasswordDataResponse {
+  @JsonKey(name: "id")
+  final String? id;
+  @JsonKey(name: "token")
+  final String? token;
+  ForgotPasswordDataResponse(
+    this.id,
+    this.token,
+  );
+  factory ForgotPasswordDataResponse.fromJson(Map<String, dynamic> json) =>
+      _$ForgotPasswordDataResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ForgotPasswordDataResponseToJson(this);
+}
+
+@JsonSerializable()
+class ForgotPasswordResponse extends BaseResponse {
+  @JsonKey(name: "data")
+  final ForgotPasswordDataResponse? data;
+  ForgotPasswordResponse({
+    required this.data,
+  });
+  factory ForgotPasswordResponse.fromJson(Map<String, dynamic> json) =>
+      _$ForgotPasswordResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ForgotPasswordResponseToJson(this);
+}
+
+@JsonSerializable()
+class ResetPasswordResponse extends BaseResponse {
+  ResetPasswordResponse();
+  factory ResetPasswordResponse.fromJson(Map<String, dynamic> json) =>
+      _$ResetPasswordResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ResetPasswordResponseToJson(this);
+}

@@ -33,9 +33,12 @@ class _BuildChangeLanguaeState extends State<BuildChangeLanguae>
             const Duration(milliseconds: Constants.durationOfChangeLanguage));
     _animation = Tween<double>(begin: 0.0, end: 1.0).animate(
         CurvedAnimation(parent: _animationController, curve: Curves.easeInOut));
-    currentLang = _appPrefs.getAppLanguage() == LanguageType.english.getValue()
-        ? LanguageType.english
-        : LanguageType.arabic;
+    Future.delayed(Duration.zero, () {
+      currentLang =
+          _appPrefs.getAppLanguage(context) == LanguageType.english.getValue()
+              ? LanguageType.english
+              : LanguageType.arabic;
+    });
   }
 
   final AppPreferences _appPrefs = instance<AppPreferences>();
@@ -141,7 +144,7 @@ class _BuildChangeLanguaeState extends State<BuildChangeLanguae>
       );
 
   Future<void> changeLanguage(LanguageType languageTyp) async {
-    if (languageTyp.getValue() == _appPrefs.getAppLanguage()) {
+    if (languageTyp.getValue() == _appPrefs.getAppLanguage(context)) {
       return;
     }
     await _appPrefs.changeAppLanguage(languageTyp);

@@ -15,3 +15,17 @@ class SignUpObject with _$SignUpObject {
     required String password,
   }) = _SignUpObject;
 }
+
+@freezed
+class ResetPasswordObject with _$ResetPasswordObject {
+  factory ResetPasswordObject(
+      {required String password,
+      required String confirmPassword}) = _ResetPasswordObject;
+}
+
+@freezed
+class ForgotPasswordObject with _$ForgotPasswordObject {
+  factory ForgotPasswordObject({
+    required String email,
+  }) = _ForgotPasswordObject;
+}

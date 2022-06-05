@@ -136,4 +136,47 @@ class RepositoryImpl implements Repository {
       return Left(ErrorHandler.handle(e).failure);
     }
   }
+
+  @override
+  Future<Either<Failure, ForgotPassword>> forgotPassword(
+      ForgotPasswordRequest forgotPasswordRequest) async {
+    try {
+      final response =
+          await _remoteDataSource.forgotPassword(forgotPasswordRequest);
+      log(response.toString());
+      if (response.status == 200) {
+        return Right(response.toDomain());
+      } else {
+        return Left(
+          Failure(
+            code: response.status ?? 0,
+            message: response.message ?? ResponseMessage.defaultt,
+          ),
+        );
+      }
+    } catch (e) {
+      return Left(ErrorHandler.handle(e).failure);
+    }
+  }
+
+  @override
+  Future<Either<Failure, ResetPassword>> resetPassword(
+      ResetPasswordRequest resetPasswordRequest) async {
+    try {
+      final response =
+          await _remoteDataSource.resetPassword(resetPasswordRequest);
+      if (response.status == 201) {
+        return Right(response.toDomain());
+      } else {
+        return Left(
+          Failure(
+            code: response.status ?? 0,
+            message: response.message ?? ResponseMessage.defaultt,
+          ),
+        );
+      }
+    } catch (e) {
+      return Left(ErrorHandler.handle(e).failure);
+    }
+  }
 }

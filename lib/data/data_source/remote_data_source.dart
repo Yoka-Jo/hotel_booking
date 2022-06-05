@@ -13,6 +13,10 @@ abstract class RemoteDataSource {
       GetFavHotelsRequest getFavHotelsRequest);
   Future<HotelsReponse> searchForHotels(
       SearchForHotelsRequest searchForHotelsRequest);
+  Future<ForgotPasswordResponse> forgotPassword(
+      ForgotPasswordRequest forgotPasswordRequest);
+  Future<ResetPasswordResponse> resetPassword(
+      ResetPasswordRequest resetPasswordRequest);
 }
 
 class RemoteDataSourceImpl implements RemoteDataSource {
@@ -61,4 +65,24 @@ class RemoteDataSourceImpl implements RemoteDataSource {
     return await _appServiceClient
         .searchForHotels(searchForHotelsRequest.hotelName);
   }
+
+  @override
+  Future<ForgotPasswordResponse> forgotPassword(
+      ForgotPasswordRequest forgotPasswordRequest) async {
+    return await _appServiceClient.forgotPassword(
+        forgotPasswordRequest.email, forgotPasswordRequest.dynamicLink);
+  }
+
+  @override
+  Future<ResetPasswordResponse> resetPassword(
+      ResetPasswordRequest resetPasswordRequest) async {
+    return await _appServiceClient.resetPassword(resetPasswordRequest.id,
+        resetPasswordRequest.token, resetPasswordRequest.password);
+  }
 }
+
+/*
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InltODM3MDMwMkBnbWFpbC
+5jb20iLCJpZCI6IjYyOWNkNzFkYjgyNTRkZjQ1M2MzODAyMCIsImlhdCI6MTY1NDQ2MTc0OS
+wiZXhwIjoxNjU0NDYyNjQ5fQ.TPPFqAsLXwEIHJyWaWAdBey2j0U6vGMSN8TtlholTGs
+*/

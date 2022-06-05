@@ -15,14 +15,18 @@ class AppStrings {
   static const String fullName = "full_name";
   static const String email = "email";
   static const String password = "password";
+  static const String confirmPassword = "confirm-password";
   static const String haveAccoun = "have_accoun";
   static const String forgetPassword = "forget_password";
   static const String loading = "loading";
   static const String ok = "ok";
+  static const String submit = "submit";
   static const String retryAgain = "retry_again";
   static const String success = "success";
   static const String emailInvalid = "email_invalid";
   static const String passwordInvalid = "password_invalid";
+  static const String passwordAndConfirmPasswordNotEqual =
+      "password_and_confirm_password_not_equal";
   static const String nameInvalid = "name_invalid";
   static const String hello = "hello";
   static const String searchTextField = "search_text_field";
@@ -48,6 +52,9 @@ class AppStrings {
   static const String addYourFavouriteHotels =
       "start-adding-hotels-to-favourite";
   static const String clickForDetails = "click-for-details";
+  static const String next = "next";
+  static const String resetLinkHasBeenSent = "reset-link-has-been-sent";
+  static const String reset = "reset";
 
   //! Error Handler
   static const String badRequestError = "bad_request_error";

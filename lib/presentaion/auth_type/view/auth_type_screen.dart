@@ -1,14 +1,53 @@
+import 'dart:async';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hotel_booking/app/functions.dart';
+import '../../../app/app_prefs.dart';
+import '../../../app/dependency_injection.dart';
+import '../../common/helpers/dynamic_link_helper.dart';
 import '../../resources/assets_manager.dart';
 import '../../resources/colors_manager.dart';
 import '../../resources/routes_manager.dart';
 import '../../resources/strings_manager.dart';
 
-class AuthTypeScreen extends StatelessWidget {
+class AuthTypeScreen extends StatefulWidget {
   const AuthTypeScreen({Key? key}) : super(key: key);
+
+  @override
+  State<AuthTypeScreen> createState() => _AuthTypeScreenState();
+}
+
+class _AuthTypeScreenState extends State<AuthTypeScreen>
+    with WidgetsBindingObserver {
+  final DynamicLinkHelper _dynamicLinkHelper = DynamicLinkHelper();
+  late Timer _timerLink;
+  final AppPreferences _appPrefs = instance<AppPreferences>();
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      _timerLink = Timer(
+        const Duration(milliseconds: 1000),
+        () async {
+          await _dynamicLinkHelper.retrieveDynamicLink(context);
+        },
+      );
+    }
+  }
+
+  @override
+  void didChangeDependencies() {
+    _appPrefs.getLocal(context).then((locale) => {context.setLocale(locale)});
+    super.didChangeDependencies();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -83,5 +122,12 @@ class AuthTypeScreen extends StatelessWidget {
 
   Color getCreateButtonTextColor(context) {
     return isLightTheme(context) ? Colors.white : Colors.black;
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    _timerLink.cancel();
+    super.dispose();
   }
 }

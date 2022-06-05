@@ -1,7 +1,9 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:hotel_booking/presentaion/main/pages/settings/widgets/build_logout_button.dart';
 
-import '../helpers/dynamic_link_helper.dart';
+import '../../../../common/helpers/dynamic_link_helper.dart';
 import '../widgets/build_change_app_theme.dart';
 import '../widgets/build_change_language.dart';
 import '../widgets/build_share_button.dart';
@@ -23,6 +25,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             future: _dynamicLinkHelper.createDynamicLink(),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
+                log(snapshot.data.toString());
                 return Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,

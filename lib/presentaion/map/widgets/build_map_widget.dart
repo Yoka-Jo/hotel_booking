@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:hotel_booking/app/constants.dart';
 
 class BuildMapWidget extends StatelessWidget {
   const BuildMapWidget({
@@ -31,6 +32,9 @@ class BuildMapWidget extends StatelessWidget {
       myLocationButtonEnabled: false,
       initialCameraPosition: cameraPosition,
       onMapCreated: (GoogleMapController controller) {
+        if (Theme.of(context).brightness == Brightness.dark) {
+          controller.setMapStyle(Constants.googleMapDarkTheme);
+        }
         mapController.complete(controller);
       },
     );

@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../../resources/colors_manager.dart';
+import '../../resources/routes_manager.dart';
 import '../../resources/strings_manager.dart';
 
 class BuildHaveAccount extends StatelessWidget {
@@ -10,7 +11,9 @@ class BuildHaveAccount extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Navigator.of(context).popAndPushNamed(Routes.loginRoute);
+      },
       child: Align(
         alignment: Alignment.centerRight,
         child: RichText(

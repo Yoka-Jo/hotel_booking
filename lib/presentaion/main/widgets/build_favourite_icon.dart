@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../resources/colors_manager.dart';
-import '../pages/home/viewmodel/cubit/home_cubit.dart';
+import '../cubit/main_cubit.dart';
 
 class BuildFavouriteIcon extends StatelessWidget {
   const BuildFavouriteIcon({
@@ -17,7 +17,7 @@ class BuildFavouriteIcon extends StatelessWidget {
     return InkWell(
       borderRadius: BorderRadius.circular(20.0),
       onTap: () {
-        context.read<HomeCubit>().changeHotelFavState(hotelId);
+        context.read<MainCubit>().changeHotelFavState(hotelId);
       },
       child: Container(
         height: 40.0,
@@ -28,7 +28,7 @@ class BuildFavouriteIcon extends StatelessWidget {
         ),
         child: Icon(
           Icons.favorite,
-          color: HomeCubit.get(context).isFavourite(hotelId)
+          color: MainCubit.get(context).isFavourite(hotelId)
               ? AppColors.red
               : Colors.grey,
         ),

@@ -9,6 +9,8 @@ bool isEmailValid(String email) {
       .hasMatch(email);
 }
 
+bool isPasswordValid(String password) => password.length >= 6;
+
 ui.TextDirection getTextDirection(BuildContext context) {
   return context.locale == englishLocal
       ? ui.TextDirection.ltr

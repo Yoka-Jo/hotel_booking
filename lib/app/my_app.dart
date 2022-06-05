@@ -21,21 +21,14 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void didChangeDependencies() {
-    _appPrefs.getLocal().then((locale) => {context.setLocale(locale)});
+    _appPrefs.getLocal(context).then((locale) => {context.setLocale(locale)});
     super.didChangeDependencies();
   }
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => FlowStateCubit(),
-        ),
-        // BlocProvider(
-        //   create: (context) => instance<AuthenticationCubit>(),
-        // ),
-      ],
+    return BlocProvider(
+      create: (context) => FlowStateCubit(),
       child: MaterialApp(
         localizationsDelegates: context.localizationDelegates,
         supportedLocales: context.supportedLocales,

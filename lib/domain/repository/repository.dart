@@ -14,4 +14,8 @@ abstract class Repository {
       GetFavHotelsRequest getFavHotelsRequest);
   Future<Either<Failure, Hotels>> searchForHotels(
       SearchForHotelsRequest hotelName);
+  Future<Either<Failure, ForgotPassword>> forgotPassword(
+      ForgotPasswordRequest forgotPasswordRequest);
+  Future<Either<Failure, ResetPassword>> resetPassword(
+      ResetPasswordRequest resetPasswordRequest);
 }

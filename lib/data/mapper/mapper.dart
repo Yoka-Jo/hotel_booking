@@ -1,6 +1,7 @@
 import 'package:hotel_booking/data/responses/responses.dart';
 import 'package:hotel_booking/domain/models/models.dart';
 import '../../app/extensions.dart';
+import '../../domain/models/models.dart';
 
 extension AuthDataRespnseMapper on AuthDataResponse? {
   AuthData toDomain() {
@@ -61,5 +62,22 @@ extension FavouriteHotelsResponseMapper on FavouriteHotelsResponse? {
   FavouriteHotels toDomain() {
     return FavouriteHotels(
         hotels: this?.hotels?.map((hotel) => hotel.orEmpty()).toList() ?? []);
+  }
+}
+
+extension ForgotPasswordMapper on ForgotPasswordResponse? {
+  ForgotPassword toDomain() {
+    return ForgotPassword(
+      id: this?.data?.id.orEmpty() ?? "",
+      token: this?.data?.token.orEmpty() ?? "",
+    );
+  }
+}
+
+extension ResetPasswordMapper on ResetPasswordResponse? {
+  ResetPassword toDomain() {
+    return ResetPassword(
+      message: this?.message.orEmpty() ?? "",
+    );
   }
 }

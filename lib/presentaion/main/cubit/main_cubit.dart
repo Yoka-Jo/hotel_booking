@@ -12,13 +12,13 @@ import 'package:hotel_booking/presentaion/common/state_renderer/state_renderer_i
 import 'package:provider/provider.dart';
 import '../../../../../../data/network/requests.dart';
 import '../../../../../../domain/models/models.dart';
-import '../../../../../common/state_renderer/cubit/flow_state_cubit.dart';
-import '../../../../../common/state_renderer/state_renderer.dart';
-import '../../../../../resources/strings_manager.dart';
-part 'home_state.dart';
+import '../../common/state_renderer/cubit/flow_state_cubit.dart';
+import '../../common/state_renderer/state_renderer.dart';
+import '../../resources/strings_manager.dart';
+part 'main_state.dart';
 
-class HomeCubit extends Cubit<HomeState> {
-  HomeCubit(this._getHotelsUseCase, this._changeHotelFavStateUseCase,
+class MainCubit extends Cubit<HomeState> {
+  MainCubit(this._getHotelsUseCase, this._changeHotelFavStateUseCase,
       this._getFavouriteHotelsUseCase, this._searchForHotelsUseCase)
       : super(HomeInitialState());
   final GetHotelsUseCase _getHotelsUseCase;
@@ -27,7 +27,7 @@ class HomeCubit extends Cubit<HomeState> {
   final SearchForHotelsUseCase _searchForHotelsUseCase;
 
   final AppPreferences _appPrefs = instance<AppPreferences>();
-  static HomeCubit get(BuildContext context) => Provider.of<HomeCubit>(context);
+  static MainCubit get(BuildContext context) => Provider.of<MainCubit>(context);
   Hotels hotels = Hotels(data: [], message: AppStrings.noHotelsFound.tr());
   List<HotelData> favouriteHotels = [];
   List<String> favouriteHotelsIds = [];

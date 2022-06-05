@@ -1,9 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hotel_booking/domain/usecases/change_hotel_fav_state_usecase.dart';
+import 'package:hotel_booking/domain/usecases/forgot_password_usecase.dart';
 import 'package:hotel_booking/domain/usecases/get_hotels_usecase.dart';
 import 'package:hotel_booking/domain/usecases/search_for_hotels_usecase.dart';
-import 'package:hotel_booking/presentaion/main/pages/home/viewmodel/cubit/home_cubit.dart';
+import 'package:hotel_booking/presentaion/forgot_password/cubit/forgot_password_cubit.dart';
+import 'package:hotel_booking/presentaion/main/cubit/main_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../data/data_source/remote_data_source.dart';
 import '../data/network/app_api.dart';
@@ -12,11 +14,13 @@ import '../data/repository/repository.dart';
 import '../domain/repository/repository.dart';
 import '../domain/usecases/get_favourite_hotels_usecase.dart';
 import '../domain/usecases/login_usecase.dart';
+import '../domain/usecases/reset_password_usecase.dart';
 import '../domain/usecases/signup_usecase.dart';
 import '../presentaion/auth_type/authentication/auto_authentication.dart';
 import '../presentaion/auth_type/viewmodel/helpers/authentication_helper.dart';
-import '../presentaion/login/viewmodel/cubit/login_cubit.dart';
-import '../presentaion/signup/viewmodel/cubit/signup_cubit.dart';
+import '../presentaion/login/cubit/login_cubit.dart';
+import '../presentaion/reset_password/cubit/reset_password_cubit.dart';
+import '../presentaion/signup/cubit/signup_cubit.dart';
 import 'app_prefs.dart';
 
 final instance = GetIt.instance;
@@ -63,6 +67,26 @@ void initSignUpModule() {
   }
 }
 
+void initForgotPasswordModule() {
+  if (!GetIt.I.isRegistered<ForgotPasswordUseCase>()) {
+    instance.registerFactory<ForgotPasswordUseCase>(
+        () => ForgotPasswordUseCase(instance()));
+
+    instance.registerFactory<ForgotPasswordCubit>(
+        () => ForgotPasswordCubit(instance()));
+  }
+}
+
+void initResetPasswordModule() {
+  if (!GetIt.I.isRegistered<ResetPasswordUseCase>()) {
+    instance.registerFactory<ResetPasswordUseCase>(
+        () => ResetPasswordUseCase(instance()));
+
+    instance.registerFactory<ResetPasswordCubit>(
+        () => ResetPasswordCubit(instance()));
+  }
+}
+
 void initHomeModule() {
   if (!GetIt.I.isRegistered<GetHotelsUseCase>()) {
     instance
@@ -77,7 +101,7 @@ void initHomeModule() {
     instance.registerFactory<SearchForHotelsUseCase>(
         () => SearchForHotelsUseCase(instance()));
 
-    instance.registerFactory<HomeCubit>(
-        () => HomeCubit(instance(), instance(), instance(), instance()));
+    instance.registerFactory<MainCubit>(
+        () => MainCubit(instance(), instance(), instance(), instance()));
   }
 }

@@ -20,11 +20,18 @@ class PlaceDetailsScreen extends StatelessWidget {
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             BuildHotelDetailsImage(hotelData: hotelData),
-            BuildHotelData(hotelData: hotelData),
-            BuildClickForMoreButton(hotelData: hotelData)
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  BuildHotelData(hotelData: hotelData),
+                  BuildClickForMoreButton(hotelData: hotelData)
+                ],
+              ),
+            ),
           ],
         ),
       ),

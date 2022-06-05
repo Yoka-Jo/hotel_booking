@@ -1,35 +1,43 @@
 import 'dart:convert';
-import 'dart:developer';
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:hotel_booking/domain/models/models.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../presentaion/resources/language_manager.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 const String kPrefsIsLightTheme = "is_light_theme";
 const String kPrefsLang = "app_language";
 const String kPrefsKeyIsOnBoardingScreenViewed =
     "PREFS_KEY_IS_ONBOARDING_SCREEN_VIEWED";
 const String kPrefsUserData = "userData";
+const String kPrefsForgotPasswordData = "forgot_password_data";
 
 class AppPreferences {
   final SharedPreferences _sharedPreferences;
   AppPreferences(this._sharedPreferences);
 
-  String getAppLanguage() {
+  String getAppLanguage(BuildContext context) {
     String? language = _sharedPreferences.getString(kPrefsLang);
     if (language != null && language.isNotEmpty) {
       return language;
     } else {
-      return LanguageType.english.getValue();
+      return isSupportedLocale(context)
+          ? Platform.localeName
+          : LanguageType.english.getValue();
     }
   }
+
+  bool isSupportedLocale(BuildContext context) => context.supportedLocales
+      .map((localeName) => localeName.toString())
+      .toList()
+      .contains(Platform.localeName);
 
   Future<void> changeAppLanguage(LanguageType languageTyp) async =>
       await _sharedPreferences.setString(kPrefsLang, languageTyp.getValue());
 
-  Future<Locale> getLocal() async {
-    String currentLang = getAppLanguage();
-    log("This is the get local " + currentLang);
+  Future<Locale> getLocal(BuildContext context) async {
+    String currentLang = getAppLanguage(context);
     if (currentLang == LanguageType.arabic.getValue()) {
       return arabicLocal;
     } else {
@@ -87,6 +95,25 @@ class AppPreferences {
       await _sharedPreferences.setBool(kPrefsIsLightTheme, false);
     } else {
       await _sharedPreferences.setBool(kPrefsIsLightTheme, true);
+    }
+  }
+
+  Future<bool> saveForgotPasswordData(ForgotPassword forgotPassword) async {
+    final userData = json.encode({
+      "userId": forgotPassword.id,
+      'token': forgotPassword.token,
+    });
+    return await _sharedPreferences.setString(
+        kPrefsForgotPasswordData, userData);
+  }
+
+  Map<String, dynamic> getForgotPasswordData() {
+    String? forgotPasswordData =
+        _sharedPreferences.getString(kPrefsForgotPasswordData);
+    if (forgotPasswordData != null && forgotPasswordData.isNotEmpty) {
+      return json.decode(forgotPasswordData);
+    } else {
+      return {};
     }
   }
 

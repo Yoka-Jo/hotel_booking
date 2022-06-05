@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -9,10 +8,9 @@ import 'package:hotel_booking/app/app_prefs.dart';
 import 'package:hotel_booking/presentaion/common/state_renderer/state_renderer_impl.dart';
 import 'package:hotel_booking/presentaion/resources/assets_manager.dart';
 import 'package:hotel_booking/presentaion/resources/strings_manager.dart';
-
 import '../../../app/dependency_injection.dart';
 import '../../resources/routes_manager.dart';
-import '../viewmodel/cubit/signup_cubit.dart';
+import '../cubit/signup_cubit.dart';
 import '../widgets/build_have_account.dart';
 import '../widgets/build_signup_button.dart';
 import '../widgets/build_signup_fields.dart';
@@ -33,13 +31,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   void _bind() {
     _nameEditingcontroller.addListener(() {
-      SignUpCubit.get(context).setName(_nameEditingcontroller.text);
+      context.read<SignUpCubit>().setName(_nameEditingcontroller.text);
     });
     _emailEditingcontroller.addListener(() {
-      SignUpCubit.get(context).setEmail(_emailEditingcontroller.text);
+      context.read<SignUpCubit>().setEmail(_emailEditingcontroller.text);
     });
     _passwordEditingcontroller.addListener(() {
-      SignUpCubit.get(context).setPassword(_passwordEditingcontroller.text);
+      context.read<SignUpCubit>().setPassword(_passwordEditingcontroller.text);
     });
   }
 
@@ -86,27 +84,25 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 AppStrings.createNewAccount,
                 style: Theme.of(context).textTheme.titleLarge,
               ).tr(),
-              Form(
-                child: Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      BuildSignUpFields(
-                        nameController: _nameEditingcontroller,
-                        emailController: _emailEditingcontroller,
-                        passwordController: _passwordEditingcontroller,
-                      ),
-                      const SizedBox(
-                        height: 8.0,
-                      ),
-                      const BuildHaveAccount(),
-                      const SizedBox(
-                        height: 30.0,
-                      ),
-                      BuildSignUpButton()
-                    ],
-                  ),
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    BuildSignUpFields(
+                      nameController: _nameEditingcontroller,
+                      emailController: _emailEditingcontroller,
+                      passwordController: _passwordEditingcontroller,
+                    ),
+                    const SizedBox(
+                      height: 8.0,
+                    ),
+                    const BuildHaveAccount(),
+                    const SizedBox(
+                      height: 30.0,
+                    ),
+                    BuildSignUpButton()
+                  ],
                 ),
               )
             ],

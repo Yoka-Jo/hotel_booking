@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hotel_booking/domain/models/models.dart';
 import 'package:hotel_booking/presentaion/auth_type/view/auth_type_screen.dart';
+import 'package:hotel_booking/presentaion/forgot_password/views/forgot_password_screen.dart';
 import 'package:hotel_booking/presentaion/login/view/login_screen.dart';
 import 'package:hotel_booking/presentaion/main/main_screen.dart';
 import 'package:hotel_booking/presentaion/map/views/map_screen.dart';
@@ -12,11 +13,13 @@ import 'package:hotel_booking/presentaion/resources/strings_manager.dart';
 import 'package:hotel_booking/presentaion/signup/view/signup_screen.dart';
 import 'package:hotel_booking/presentaion/splash/splash_screen.dart';
 import 'package:hotel_booking/presentaion/webview/view/webview_screen.dart';
-
 import '../../app/dependency_injection.dart';
-import '../login/viewmodel/cubit/login_cubit.dart';
-import '../main/pages/home/viewmodel/cubit/home_cubit.dart';
-import '../signup/viewmodel/cubit/signup_cubit.dart';
+import '../forgot_password/cubit/forgot_password_cubit.dart';
+import '../login/cubit/login_cubit.dart';
+import '../main/cubit/main_cubit.dart';
+import '../reset_password/cubit/reset_password_cubit.dart';
+import '../reset_password/views/reset_password_screen.dart';
+import '../signup/cubit/signup_cubit.dart';
 
 class Routes {
   static const String splashRoute = "/splash";
@@ -28,6 +31,8 @@ class Routes {
   static const String placeDetailsRoute = "/place-details";
   static const String mapRoute = "/map";
   static const String webViewRoute = "/web-view";
+  static const String forgotPasswordRoute = "/forgot-password";
+  static const String resetPasswordRoute = "/reset-password";
 }
 
 class RoutesGenerator {
@@ -40,6 +45,24 @@ class RoutesGenerator {
       case Routes.onboardingRoute:
         {
           return MaterialPageRoute(builder: (_) => const OnBoardingScreen());
+        }
+      case Routes.forgotPasswordRoute:
+        {
+          initForgotPasswordModule();
+          return MaterialPageRoute(
+              builder: (_) => BlocProvider(
+                    create: (_) => instance<ForgotPasswordCubit>(),
+                    child: const ForgotPasswordScreen(),
+                  ));
+        }
+      case Routes.resetPasswordRoute:
+        {
+          initResetPasswordModule();
+          return MaterialPageRoute(
+              builder: (_) => BlocProvider(
+                    create: (context) => instance<ResetPasswordCubit>(),
+                    child: const ResetPasswordScreen(),
+                  ));
         }
       case Routes.loginRoute:
         {
@@ -55,7 +78,7 @@ class RoutesGenerator {
         {
           initSignUpModule();
           return MaterialPageRoute(
-            builder: (context) => BlocProvider(
+            builder: (_) => BlocProvider(
               create: (_) => instance<SignUpCubit>(),
               child: const SignUpScreen(),
             ),
@@ -78,7 +101,7 @@ class RoutesGenerator {
           initHomeModule();
           return MaterialPageRoute(
               builder: (_) => BlocProvider(
-                    create: (context) => instance<HomeCubit>(),
+                    create: (context) => instance<MainCubit>(),
                     child: const MainScreen(),
                   ));
         }
