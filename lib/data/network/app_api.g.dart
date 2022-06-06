@@ -10,7 +10,7 @@ part of 'app_api.dart';
 
 class _AppServiceClient implements AppServiceClient {
   _AppServiceClient(this._dio, {this.baseUrl}) {
-    baseUrl ??= 'http://192.168.1.5:3000/api';
+    baseUrl ??= 'https://yoka-hotel-booking.herokuapp.com/api';
   }
 
   final Dio _dio;
