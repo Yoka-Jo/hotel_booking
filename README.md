@@ -1,4 +1,4 @@
-# ChatApp
+# Hotel Booking
 Hotel Booking application using Node Js as a backend.
 
 # Features
@@ -29,7 +29,7 @@ Hotel Booking application using Node Js as a backend.
   <img src='hotelBookingPics/login_l.jpg'width="42%"/>   
   <img src='hotelBookingPics/login_button_active_l.jpg'width="42%"/>   
   <img src='hotelBookingPics/login_a_d.jpg'width="42%"/>   
-  <img src='hotelBookingPics/forgot_passwordjpg'width="42%"/>   
+  <img src='hotelBookingPics/forgot_password.jpg'width="42%"/>   
   <img src='hotelBookingPics/reset_password.jpg'width="42%"/>   
   <img src='hotelBookingPics/sent_email.jpg'width="42%"/>   
   <img src='hotelBookingPics/signup.jpg'width="42%"/>   
