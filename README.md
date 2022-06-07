@@ -47,7 +47,7 @@ Hotel Booking application using Node Js as a backend.
   <img src='hotelBookingPics/details_button_d.jpg'width="42%"/>   
   <img src='hotelBookingPics/details_button_a_d.jpg'width="42%"/>   
   <img src='hotelBookingPics/details_a_d.jpg'width="42%"/>   
-  <img src='hotelBookingPics/webview.jpg.jpg'width="42%"/>   
+  <img src='hotelBookingPics/webview.jpg'width="42%"/>   
   <img src='hotelBookingPics/map_l.jpg'width="42%"/>   
   <img src='hotelBookingPics/map_d.jpg'width="42%"/>   
   <img src='hotelBookingPics/favourite_l.jpg'width="42%"/>   
