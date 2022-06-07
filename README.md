@@ -1,4 +1,4 @@
-# Hotel Booking
+# ChatApp
 Hotel Booking application using Node Js as a backend.
 
 # Features
@@ -16,48 +16,48 @@ Hotel Booking application using Node Js as a backend.
 
 # Screenshots
 <p align="center">
-  <img src='hotelBookingPics/splash_screen_l.png'width="42%"/>   
-  <img src='hotelBookingPics/splash_screen_d.png'width="42%"/>   
-  <img src='hotelBookingPics/onboarding_1_l.png'width="42%"/>   
-  <img src='hotelBookingPics/onboarding_1_a_l.png'width="42%"/>   
-  <img src='hotelBookingPics/onboarding_2_l.png'width="42%"/>   
-  <img src='hotelBookingPics/onboarding_2_a_l.png'width="42%"/>   
-  <img src='hotelBookingPics/onboarding_3_l.png'width="42%"/>   
-  <img src='hotelBookingPics/onboarding_3_a_l.png'width="42%"/>   
-  <img src='hotelBookingPics/auth_l.png'width="42%"/>   
-  <img src='hotelBookingPics/auth_a_d.png'width="42%"/>   
-  <img src='hotelBookingPics/login_l.png'width="42%"/>   
-  <img src='hotelBookingPics/login_button_active_l.png'width="42%"/>   
-  <img src='hotelBookingPics/login_a_d.png'width="42%"/>   
-  <img src='hotelBookingPics/forgot_passwordpng'width="42%"/>   
-  <img src='hotelBookingPics/reset_password.png'width="42%"/>   
-  <img src='hotelBookingPics/sent_email.png'width="42%"/>   
-  <img src='hotelBookingPics/signup.png'width="42%"/>   
-  <img src='hotelBookingPics/signup_a_d.png'width="42%"/>   
-  <img src='hotelBookingPics/home_l.png'width="42%"/>   
-  <img src='hotelBookingPics/home_d.png'width="42%"/>   
-  <img src='hotelBookingPics/home_a_d.png'width="42%"/>   
-  <img src='hotelBookingPics/search_price_l.png'width="42%"/>   
-  <img src='hotelBookingPics/search_price_d.png'width="42%"/>   
-  <img src='hotelBookingPics/search_l.png'width="42%"/>   
-  <img src='hotelBookingPics/search_l.png'width="42%"/>   
-  <img src='hotelBookingPics/details_l.png'width="42%"/>   
-  <img src='hotelBookingPics/details_d.png'width="42%"/>   
-  <img src='hotelBookingPics/details_with_button_l.png'width="42%"/>   
-  <img src='hotelBookingPics/details_button_d.png'width="42%"/>   
-  <img src='hotelBookingPics/details_button_a_d.png'width="42%"/>   
-  <img src='hotelBookingPics/details_a_d.png'width="42%"/>   
-  <img src='hotelBookingPics/webview.jpg.png'width="42%"/>   
-  <img src='hotelBookingPics/map_l.png'width="42%"/>   
-  <img src='hotelBookingPics/map_d.png'width="42%"/>   
-  <img src='hotelBookingPics/favourite_l.png'width="42%"/>   
-  <img src='hotelBookingPics/favourite_d.png'width="42%"/>   
-  <img src='hotelBookingPics/favourite_a_d.png'width="42%"/>   
-  <img src='hotelBookingPics/settings_l.png'width="42%"/>   
-  <img src='hotelBookingPics/settings_d.png'width="42%"/>
-  <img src='hotelBookingPics/settings_with_languages_l.png'width="42%"/>   
-  <img src='hotelBookingPics/settings_languages_d.png'width="42%"/>   
-  <img src='hotelBookingPics/settings_a_d.png'width="42%"/>   
+  <img src='hotelBookingPics/splash_screen_l.jpg'width="42%"/>   
+  <img src='hotelBookingPics/splash_screen_d.jpg'width="42%"/>   
+  <img src='hotelBookingPics/onboarding_1_l.jpg'width="42%"/>   
+  <img src='hotelBookingPics/onboarding_1_a_l.jpg'width="42%"/>   
+  <img src='hotelBookingPics/onboarding_2_l.jpg'width="42%"/>   
+  <img src='hotelBookingPics/onboarding_2_a_l.jpg'width="42%"/>   
+  <img src='hotelBookingPics/onboarding_3_l.jpg'width="42%"/>   
+  <img src='hotelBookingPics/onboarding_3_a_l.jpg'width="42%"/>   
+  <img src='hotelBookingPics/auth_l.jpg'width="42%"/>   
+  <img src='hotelBookingPics/auth_a_d.jpg'width="42%"/>   
+  <img src='hotelBookingPics/login_l.jpg'width="42%"/>   
+  <img src='hotelBookingPics/login_button_active_l.jpg'width="42%"/>   
+  <img src='hotelBookingPics/login_a_d.jpg'width="42%"/>   
+  <img src='hotelBookingPics/forgot_passwordjpg'width="42%"/>   
+  <img src='hotelBookingPics/reset_password.jpg'width="42%"/>   
+  <img src='hotelBookingPics/sent_email.jpg'width="42%"/>   
+  <img src='hotelBookingPics/signup.jpg'width="42%"/>   
+  <img src='hotelBookingPics/signup_a_d.jpg'width="42%"/>   
+  <img src='hotelBookingPics/home_l.jpg'width="42%"/>   
+  <img src='hotelBookingPics/home_d.jpg'width="42%"/>   
+  <img src='hotelBookingPics/home_a_d.jpg'width="42%"/>   
+  <img src='hotelBookingPics/search_price_l.jpg'width="42%"/>   
+  <img src='hotelBookingPics/search_price_d.jpg'width="42%"/>   
+  <img src='hotelBookingPics/search_l.jpg'width="42%"/>   
+  <img src='hotelBookingPics/search_l.jpg'width="42%"/>   
+  <img src='hotelBookingPics/details_l.jpg'width="42%"/>   
+  <img src='hotelBookingPics/details_d.jpg'width="42%"/>   
+  <img src='hotelBookingPics/details_with_button_l.jpg'width="42%"/>   
+  <img src='hotelBookingPics/details_button_d.jpg'width="42%"/>   
+  <img src='hotelBookingPics/details_button_a_d.jpg'width="42%"/>   
+  <img src='hotelBookingPics/details_a_d.jpg'width="42%"/>   
+  <img src='hotelBookingPics/webview.jpg.jpg'width="42%"/>   
+  <img src='hotelBookingPics/map_l.jpg'width="42%"/>   
+  <img src='hotelBookingPics/map_d.jpg'width="42%"/>   
+  <img src='hotelBookingPics/favourite_l.jpg'width="42%"/>   
+  <img src='hotelBookingPics/favourite_d.jpg'width="42%"/>   
+  <img src='hotelBookingPics/favourite_a_d.jpg'width="42%"/>   
+  <img src='hotelBookingPics/settings_l.jpg'width="42%"/>   
+  <img src='hotelBookingPics/settings_d.jpg'width="42%"/>
+  <img src='hotelBookingPics/settings_with_languages_l.jpg'width="42%"/>   
+  <img src='hotelBookingPics/settings_languages_d.jpg'width="42%"/>   
+  <img src='hotelBookingPics/settings_a_d.jpg'width="42%"/>   
 </p>
 
 ## Getting Started
