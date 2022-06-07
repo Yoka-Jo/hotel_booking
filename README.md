@@ -1,4 +1,4 @@
-# ChatApp
+# Hotel Booking
 Hotel Booking application using Node Js as a backend.
 
 # Features
