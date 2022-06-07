@@ -16,8 +16,8 @@ Hotel Booking application using Node Js as a backend.
 
 # Screenshots
 <p align="center">
-  <img src='hotelBookingPics/splash_screen_l.jpg'width="42%"/>   
-  <img src='hotelBookingPics/splash_screen_d.jpg'width="42%"/>   
+  <img src='hotelBookingPics/splash_screen_l.jpg'width="30%"/>   
+  <img src='hotelBookingPics/splash_screen_d.jpg'width="30%"/>   
   <img src='hotelBookingPics/onboarding_1_l.jpg'width="42%"/>   
   <img src='hotelBookingPics/onboarding_1_a_l.jpg'width="42%"/>   
   <img src='hotelBookingPics/onboarding_2_l.jpg'width="42%"/>   
