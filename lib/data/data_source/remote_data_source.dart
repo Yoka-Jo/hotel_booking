@@ -80,9 +80,3 @@ class RemoteDataSourceImpl implements RemoteDataSource {
         resetPasswordRequest.token, resetPasswordRequest.password);
   }
 }
-
-/*
-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InltODM3MDMwMkBnbWFpbC
-5jb20iLCJpZCI6IjYyOWNkNzFkYjgyNTRkZjQ1M2MzODAyMCIsImlhdCI6MTY1NDQ2MTc0OS
-wiZXhwIjoxNjU0NDYyNjQ5fQ.TPPFqAsLXwEIHJyWaWAdBey2j0U6vGMSN8TtlholTGs
-*/
