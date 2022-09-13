@@ -3,6 +3,12 @@ import 'package:hotel_booking/domain/models/models.dart';
 import '../../app/extensions.dart';
 import '../../domain/models/models.dart';
 
+// extension BaseResponseMapper on BaseResponse {
+//    dynamic toDomain() {
+//     return ;
+//    }
+// }
+
 extension AuthDataRespnseMapper on AuthDataResponse? {
   AuthData toDomain() {
     return AuthData(

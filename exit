@@ -1,0 +1,46 @@
+[1mdiff --git a/lib/data/mapper/mapper.dart b/lib/data/mapper/mapper.dart[m
+[1mindex fd5daf3..e69931c 100644[m
+[1m--- a/lib/data/mapper/mapper.dart[m
+[1m+++ b/lib/data/mapper/mapper.dart[m
+[36m@@ -3,6 +3,12 @@[m [mimport 'package:hotel_booking/domain/models/models.dart';[m
+ import '../../app/extensions.dart';[m
+ import '../../domain/models/models.dart';[m
+ [m
+[32m+[m[32m// extension BaseResponseMapper on BaseResponse {[m
+[32m+[m[32m//    dynamic toDomain() {[m
+[32m+[m[32m//     return ;[m
+[32m+[m[32m//    }[m
+[32m+[m[32m// }[m
+[32m+[m
+ extension AuthDataRespnseMapper on AuthDataResponse? {[m
+   AuthData toDomain() {[m
+     return AuthData([m
+[1mdiff --git a/lib/data/repository/repository.dart b/lib/data/repository/repository.dart[m
+[1mindex 5ee7804..17a9998 100644[m
+[1m--- a/lib/data/repository/repository.dart[m
+[1m+++ b/lib/data/repository/repository.dart[m
+[36m@@ -179,4 +179,5 @@[m [mclass RepositoryImpl implements Repository {[m
+       return Left(ErrorHandler.handle(e).failure);[m
+     }[m
+   }[m
+[32m+[m
+ }[m
+[1mdiff --git a/lib/domain/models/models.dart b/lib/domain/models/models.dart[m
+[1mindex 972b144..be8c786 100644[m
+[1m--- a/lib/domain/models/models.dart[m
+[1m+++ b/lib/domain/models/models.dart[m
+[36m@@ -1,5 +1,3 @@[m
+[31m-abstract class Models {}[m
+[31m-[m
+ class OnBoardingData {[m
+   final String image;[m
+   final String title;[m
+[36m@@ -65,7 +63,7 @@[m [mclass HotelData {[m
+   });[m
+ }[m
+ [m
+[31m-class Hotels implements Models {[m
+[32m+[m[32mclass Hotels {[m
+   final List<HotelData> data;[m
+   final String message;[m
+   Hotels({[m

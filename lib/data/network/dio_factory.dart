@@ -19,7 +19,6 @@ class DioFactory {
     };
     dio.options = BaseOptions(
       baseUrl: Constants.baseUrl,
-      headers: headers,
       receiveTimeout: Constants.apiTimeOut,
       sendTimeout: Constants.apiTimeOut,
     );

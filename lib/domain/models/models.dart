@@ -1,5 +1,3 @@
-abstract class Models {}
-
 class OnBoardingData {
   final String image;
   final String title;
@@ -65,7 +63,7 @@ class HotelData {
   });
 }
 
-class Hotels implements Models {
+class Hotels {
   final List<HotelData> data;
   final String message;
   Hotels({
