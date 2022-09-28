@@ -57,9 +57,9 @@ class _AuthTypeScreenState extends State<AuthTypeScreen>
         child: ListView(
           physics: const NeverScrollableScrollPhysics(),
           children: [
-            const SizedBox(
-              height: 124,
-            ),
+            // const SizedBox(
+            //   height: 124,
+            // ),
             RichText(
               textAlign: TextAlign.center,
               text: TextSpan(
