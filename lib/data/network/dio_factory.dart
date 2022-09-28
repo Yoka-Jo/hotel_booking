@@ -21,6 +21,7 @@ class DioFactory {
       baseUrl: Constants.baseUrl,
       receiveTimeout: Constants.apiTimeOut,
       sendTimeout: Constants.apiTimeOut,
+      headers: headers,
     );
     if (kDebugMode) {
       dio.interceptors.add(PrettyDioLogger(

@@ -1,21 +1,14 @@
 import 'package:hotel_booking/data/responses/responses.dart';
 import 'package:hotel_booking/domain/models/models.dart';
 import '../../app/extensions.dart';
-import '../../domain/models/models.dart';
-
-// extension BaseResponseMapper on BaseResponse {
-//    dynamic toDomain() {
-//     return ;
-//    }
-// }
 
 extension AuthDataRespnseMapper on AuthDataResponse? {
   AuthData toDomain() {
     return AuthData(
-      id: this?.id.orEmpty() ?? "",
-      userName: this?.name.orEmpty() ?? "",
-      email: this?.email.orEmpty() ?? "",
-      token: this?.token.orEmpty() ?? "",
+      id: (this?.id).orEmpty(),
+      userName: (this?.name).orEmpty(),
+      email: (this?.email).orEmpty(),
+      token: (this?.token).orEmpty(),
     );
   }
 }
@@ -23,8 +16,8 @@ extension AuthDataRespnseMapper on AuthDataResponse? {
 extension AuthenticationResponseMapper on AuthenticationResponse? {
   Authentication toDomain() {
     return Authentication(
-      data: this?.data.toDomain(),
-      message: this?.message.orEmpty() ?? "",
+      data: (this?.data).toDomain(),
+      message: (this?.message).orEmpty(),
     );
   }
 }
@@ -32,19 +25,19 @@ extension AuthenticationResponseMapper on AuthenticationResponse? {
 extension HotelDataResponseMapper on HotelDataResponse? {
   HotelData toDomain() {
     return HotelData(
-      id: this?.id.orEmpty() ?? "",
-      name: this?.name.orEmpty() ?? "",
-      title: this?.title.orEmpty() ?? "",
-      desc: this?.desc.orEmpty() ?? "",
-      type: this?.type.orEmpty() ?? "",
-      city: this?.city.orEmpty() ?? "",
-      url: this?.url.orEmpty() ?? "",
-      address: this?.address.orEmpty() ?? "",
-      distance: this?.distance.orEmpty() ?? "",
+      id: (this?.id).orEmpty(),
+      name: (this?.name).orEmpty(),
+      title: (this?.title).orEmpty(),
+      desc: (this?.desc).orEmpty(),
+      type: (this?.type).orEmpty(),
+      city: (this?.city).orEmpty(),
+      url: (this?.url).orEmpty(),
+      address: (this?.address).orEmpty(),
+      distance: (this?.distance).orEmpty(),
       photos: this?.photos?.map((photo) => photo.orEmpty()).toList() ?? [],
-      lat: this?.lat.orZero() ?? 0.0,
-      long: this?.long.orZero() ?? 0.0,
-      cheapestPrice: this?.cheapestPrice.orZero() ?? 0,
+      lat: (this?.lat).orZero(),
+      long: (this?.long).orZero(),
+      cheapestPrice: (this?.cheapestPrice).orZero(),
     );
   }
 }
@@ -53,7 +46,7 @@ extension HotelsResponseMapper on HotelsReponse? {
   Hotels toDomain() {
     return Hotels(
       data: this?.data?.map((hotel) => hotel.toDomain()).toList() ?? [],
-      message: this?.message.orEmpty() ?? "",
+      message: (this?.message).orEmpty(),
     );
   }
 }
@@ -74,8 +67,8 @@ extension FavouriteHotelsResponseMapper on FavouriteHotelsResponse? {
 extension ForgotPasswordMapper on ForgotPasswordResponse? {
   ForgotPassword toDomain() {
     return ForgotPassword(
-      id: this?.data?.id.orEmpty() ?? "",
-      token: this?.data?.token.orEmpty() ?? "",
+      id: (this?.data?.id).orEmpty(),
+      token: (this?.data?.token).orEmpty(),
     );
   }
 }
@@ -83,7 +76,7 @@ extension ForgotPasswordMapper on ForgotPasswordResponse? {
 extension ResetPasswordMapper on ResetPasswordResponse? {
   ResetPassword toDomain() {
     return ResetPassword(
-      message: this?.message.orEmpty() ?? "",
+      message: (this?.message).orEmpty(),
     );
   }
 }

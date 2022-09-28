@@ -28,7 +28,7 @@ ThemeData getAppTheme({required bool isLight}) {
       style: ElevatedButton.styleFrom(
         elevation: 0.0,
         fixedSize: const Size(double.infinity, 64),
-        primary: AppColors.primary,
+        backgroundColor: AppColors.primary,
         textStyle: TextStyle(color: isLight ? Colors.white : Colors.black),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
@@ -37,10 +37,10 @@ ThemeData getAppTheme({required bool isLight}) {
     ),
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
+        foregroundColor: isLight ? Colors.black : Colors.white,
         elevation: 0.0,
         fixedSize: const Size(double.infinity, 64),
         side: const BorderSide(color: AppColors.primary, width: 1.5),
-        primary: isLight ? Colors.black : Colors.white,
       ),
     ),
     textTheme: TextTheme(

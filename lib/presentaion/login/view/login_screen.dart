@@ -12,7 +12,6 @@ import '../../../app/dependency_injection.dart';
 import '../../resources/routes_manager.dart';
 import '../cubit/login_cubit.dart';
 import '../widgets/build_forget_password.dart';
-import '../widgets/build_login_button.dart';
 import '../widgets/build_login_fields.dart';
 
 class LogInScreen extends StatefulWidget {

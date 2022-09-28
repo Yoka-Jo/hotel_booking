@@ -1,5 +1,6 @@
 class Constants {
-  static const String baseUrl = "https://yoka-hotel-booking.herokuapp.com/api";
+  static const String baseUrl =
+      "https://yoka-hotel-booking.herokuapp.com/api"; //"http://192.168.1.10:3000/api";
 
   static const String loginPath = "/auth/login";
   static const String signUpPath = "/auth/register";

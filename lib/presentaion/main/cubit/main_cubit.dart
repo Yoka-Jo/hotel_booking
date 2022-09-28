@@ -28,7 +28,8 @@ class MainCubit extends Cubit<HomeState> {
 
   final AppPreferences _appPrefs = instance<AppPreferences>();
   static MainCubit get(BuildContext context) => Provider.of<MainCubit>(context);
-  Hotels hotels = Hotels(data: [], message: AppStrings.noHotelsFound.tr());
+  Hotels hotels =
+      Hotels(data: const [], message: AppStrings.noHotelsFound.tr());
   List<HotelData> favouriteHotels = [];
   List<String> favouriteHotelsIds = [];
   Map<String, dynamic> userData = {};
@@ -136,14 +137,14 @@ class MainCubit extends Cubit<HomeState> {
         (hotelsData) async {
       hotels = hotelsData.data.isNotEmpty
           ? hotelsData
-          : Hotels(data: [], message: AppStrings.noHotelsFound.tr());
+          : Hotels(data: const [], message: AppStrings.noHotelsFound.tr());
       isSearching = false;
       emit(HomeSearchSuccessState());
     });
   }
 
   void clearHotels() {
-    hotels = Hotels(data: [], message: AppStrings.noHotelsFound.tr());
+    hotels = Hotels(data: const [], message: AppStrings.noHotelsFound.tr());
     emit(HomeClearHotelsSuccessState());
   }
 
