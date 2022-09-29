@@ -1,13 +1,14 @@
 import 'dart:developer';
+import 'package:device_preview/device_preview.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:hotel_booking/app/dependency_injection.dart';
 import 'package:hotel_booking/app/my_app.dart';
 import 'package:hotel_booking/presentaion/resources/language_manager.dart';
-import 'firebase_options.dart';
 import 'presentaion/common/components/show_toast.dart';
 
 void notificationToast(RemoteMessage message) =>
@@ -18,13 +19,12 @@ Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async =>
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   await EasyLocalization.ensureInitialized();
   await initAppModule();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
 
   var token = await FirebaseMessaging.instance.getToken();
+  log("This is my token");
   log(token ?? "");
 
   //! Notification while app is running
@@ -41,7 +41,10 @@ void main() async {
   runApp(
     EasyLocalization(
       child: Phoenix(
-        child: MyApp(),
+        child: DevicePreview(
+          enabled: kDebugMode,
+          builder: (context) => MyApp(), // Wrap your app
+        ),
       ),
       supportedLocales: const [
         arabicLocal,

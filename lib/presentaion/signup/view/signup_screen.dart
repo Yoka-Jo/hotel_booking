@@ -3,11 +3,12 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hotel_booking/app/app_prefs.dart';
+import 'package:hotel_booking/presentaion/common/components/build_auth_image.dart';
 import 'package:hotel_booking/presentaion/common/state_renderer/state_renderer_impl.dart';
 import 'package:hotel_booking/presentaion/resources/assets_manager.dart';
 import 'package:hotel_booking/presentaion/resources/strings_manager.dart';
+import 'package:sizer/sizer.dart';
 import '../../../app/dependency_injection.dart';
 import '../../resources/routes_manager.dart';
 import '../cubit/signup_cubit.dart';
@@ -59,7 +60,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
         if (state is SignUpSuccessfullyState) {
           await _appPrefs.saveUserData(state.authData.data!);
           SchedulerBinding.instance.addPostFrameCallback((_) {
-            Navigator.of(context).pushReplacementNamed(Routes.mainRoute);
+            Navigator.of(context)
+                .pushNamedAndRemoveUntil(Routes.mainRoute, (route) => true);
           });
         }
       },
@@ -77,15 +79,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const SizedBox(height: 57),
-              SvgPicture.asset(ImageAssets.spaceImage),
-              const SizedBox(height: 16),
+              const BuildAuthImage(imagePath: ImageAssets.spaceImage),
               Text(
                 AppStrings.createNewAccount,
                 style: Theme.of(context).textTheme.titleLarge,
               ).tr(),
               Padding(
-                padding: const EdgeInsets.all(20.0),
+                padding: EdgeInsets.symmetric(horizontal: 1.6.h),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
@@ -94,12 +94,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       emailController: _emailEditingcontroller,
                       passwordController: _passwordEditingcontroller,
                     ),
-                    const SizedBox(
-                      height: 8.0,
+                    SizedBox(
+                      height: 1.25.h,
                     ),
                     const BuildHaveAccount(),
-                    const SizedBox(
-                      height: 30.0,
+                    SizedBox(
+                      height: 4.5.h,
                     ),
                     BuildSignUpButton()
                   ],

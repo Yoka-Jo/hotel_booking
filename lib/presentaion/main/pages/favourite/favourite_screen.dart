@@ -23,6 +23,7 @@ class FavouriteScreen extends StatelessWidget {
             );
           }
           return ListView.separated(
+            physics: const BouncingScrollPhysics(),
             itemCount: favouriteHotels.length,
             itemBuilder: (context, i) {
               return BuildFavouriteHotel(favouriteHotel: favouriteHotels[i]);

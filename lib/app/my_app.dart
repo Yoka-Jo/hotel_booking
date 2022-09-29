@@ -1,3 +1,4 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hotel_booking/app/app_prefs.dart';
@@ -5,6 +6,7 @@ import 'package:hotel_booking/app/dependency_injection.dart';
 import 'package:hotel_booking/presentaion/resources/routes_manager.dart';
 import 'package:hotel_booking/presentaion/resources/theme_manager.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:sizer/sizer.dart';
 import '../presentaion/common/state_renderer/cubit/flow_state_cubit.dart';
 
 class MyApp extends StatefulWidget {
@@ -27,16 +29,20 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => FlowStateCubit(),
-      child: MaterialApp(
-        localizationsDelegates: context.localizationDelegates,
-        supportedLocales: context.supportedLocales,
-        locale: context.locale,
-        debugShowCheckedModeBanner: false,
-        theme: _appPrefs.getAppThemeMode() ? getLightTheme() : getDarkTheme(),
-        onGenerateRoute: RoutesGenerator.getRoutes,
-        initialRoute: Routes.splashRoute,
+    return Sizer(
+      builder: (context, orientation, deviceType) => BlocProvider(
+        create: (context) => FlowStateCubit(),
+        child: MaterialApp(
+          useInheritedMediaQuery: true,
+          builder: DevicePreview.appBuilder,
+          localizationsDelegates: context.localizationDelegates,
+          supportedLocales: context.supportedLocales,
+          locale: context.locale,
+          debugShowCheckedModeBanner: false,
+          theme: _appPrefs.getAppThemeMode() ? getLightTheme() : getDarkTheme(),
+          onGenerateRoute: RoutesGenerator.getRoutes,
+          initialRoute: Routes.splashRoute,
+        ),
       ),
     );
   }

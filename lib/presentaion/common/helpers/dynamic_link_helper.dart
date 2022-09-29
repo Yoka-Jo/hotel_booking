@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:flutter/material.dart';
 import 'package:hotel_booking/presentaion/resources/routes_manager.dart';
@@ -8,8 +10,8 @@ import '../state_renderer/state_renderer_impl.dart';
 class DynamicLinkHelper {
   Future<Uri> createDynamicLink() async {
     final DynamicLinkParameters parameters = DynamicLinkParameters(
-      uriPrefix: 'https://hotelsbooking.page.link',
-      link: Uri.parse('https://hotelsbooking.page.link.com'),
+      uriPrefix: 'https://hotelbooking.page.link',
+      link: Uri.parse('https://hotelbooking.page.link.com'),
       androidParameters: AndroidParameters(
         packageName: 'com.example.hotel_booking',
         minimumVersion: 1,
@@ -30,6 +32,7 @@ class DynamicLinkHelper {
       final PendingDynamicLinkData? data =
           await FirebaseDynamicLinks.instance.getInitialLink();
       final Uri? deepLink = data?.link;
+      log(deepLink.toString());
 
       if (deepLink != null) {
         Navigator.of(context).popAndPushNamed(Routes.resetPasswordRoute);

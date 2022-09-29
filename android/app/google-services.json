@@ -1,45 +1,37 @@
 {
   "project_info": {
-    "project_number": "171608628367",
-    "project_id": "notifications-16f19",
-    "storage_bucket": "notifications-16f19.appspot.com"
+    "project_number": "881177570924",
+    "project_id": "notifications-b1072",
+    "storage_bucket": "notifications-b1072.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:171608628367:android:ac681fa15d8bdf8888e4fa",
+        "mobilesdk_app_id": "1:881177570924:android:d09ea05e1529c8dab03249",
         "android_client_info": {
           "package_name": "com.example.hotel_booking"
         }
       },
       "oauth_client": [
         {
-          "client_id": "171608628367-b8g57f720crmb6u27llvfnh2cnbc4sn1.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.hotel_booking",
-            "certificate_hash": "9d98da208090d10bcfee755622a9017b1de35211"
-          }
-        },
-        {
-          "client_id": "171608628367-ovn3b9fklj29ej80o7pd887b9kg5bp3u.apps.googleusercontent.com",
+          "client_id": "881177570924-gna63th02c3gh32sao39j67qu65qkqj5.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDUxBTWz_eRehwrTUlr1FUcTt0t1lhdhqA"
+          "current_key": "AIzaSyColTZZ5deLPRLzGroMLHKy1Lr28EuY9TE"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "171608628367-ovn3b9fklj29ej80o7pd887b9kg5bp3u.apps.googleusercontent.com",
+              "client_id": "881177570924-gna63th02c3gh32sao39j67qu65qkqj5.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "171608628367-pmqescfrki81fpr3begm8pbmlpb4pl6e.apps.googleusercontent.com",
+              "client_id": "881177570924-okrajlolmu93qot9u8ss2m2hhoa7rat0.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
                 "bundle_id": "com.example.hotelBooking"

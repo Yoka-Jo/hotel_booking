@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 import '../../common/components/build_text_from_field.dart';
 import '../../resources/strings_manager.dart';
 import '../cubit/signup_cubit.dart';
@@ -26,16 +27,16 @@ class BuildSignUpFields extends StatelessWidget {
           controller: nameController,
           errorText: cubit.errorName,
         ),
-        const SizedBox(
-          height: 20.0,
+        SizedBox(
+          height: 3.h,
         ),
         BuildTextFormField(
           label: AppStrings.email.tr(),
           controller: emailController,
           errorText: cubit.errorEmail,
         ),
-        const SizedBox(
-          height: 20.0,
+        SizedBox(
+          height: 3.h,
         ),
         BuildTextFormField(
           label: AppStrings.password.tr(),

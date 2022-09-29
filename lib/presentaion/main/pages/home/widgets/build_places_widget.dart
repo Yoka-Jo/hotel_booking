@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 
 import '../../../../../domain/models/models.dart';
 import '../../../widgets/build_favourite_icon.dart';
@@ -17,11 +18,11 @@ class BuildPlacesWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: GridView.builder(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
-            mainAxisSpacing: 10,
-            crossAxisSpacing: 20,
-            mainAxisExtent: 220,
+            mainAxisSpacing: 2.h,
+            crossAxisSpacing: 2.8.w,
+            mainAxisExtent: 35.h,
           ),
           physics: const BouncingScrollPhysics(),
           itemCount: hotels.length,
@@ -31,8 +32,8 @@ class BuildPlacesWidget extends StatelessWidget {
               children: [
                 Stack(alignment: Alignment.topRight, children: [
                   SizedBox(
-                      width: 150,
-                      height: 180,
+                      width: 100.w,
+                      height: 29.h,
                       child: BuildHotelmage(
                         hotelData: hotels[i],
                         borderRadius: 8.0,

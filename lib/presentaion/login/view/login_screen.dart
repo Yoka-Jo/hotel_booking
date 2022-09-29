@@ -2,11 +2,12 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:hotel_booking/presentaion/common/components/build_auth_image.dart';
 import 'package:hotel_booking/presentaion/common/state_renderer/state_renderer_impl.dart';
 import 'package:hotel_booking/presentaion/login/widgets/build_login_button.dart';
 import 'package:hotel_booking/presentaion/resources/assets_manager.dart';
 import 'package:hotel_booking/presentaion/resources/strings_manager.dart';
+import 'package:sizer/sizer.dart';
 import '../../../app/app_prefs.dart';
 import '../../../app/dependency_injection.dart';
 import '../../resources/routes_manager.dart';
@@ -49,7 +50,10 @@ class _LogInScreenState extends State<LogInScreen> {
         if (state is LogInSuccessfullyState) {
           await _appPrefs.saveUserData(state.authData.data!);
           SchedulerBinding.instance.addPostFrameCallback((_) {
-            Navigator.of(context).pushReplacementNamed(Routes.mainRoute);
+            Navigator.of(context).pushNamedAndRemoveUntil(
+              Routes.mainRoute,
+              (route) => true,
+            );
           });
         }
       },
@@ -71,15 +75,13 @@ class _LogInScreenState extends State<LogInScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const SizedBox(height: 130),
-              SvgPicture.asset(ImageAssets.personImage),
-              const SizedBox(height: 16),
+              const BuildAuthImage(imagePath: ImageAssets.personImage),
               Text(
                 AppStrings.welcomeBadk,
                 style: Theme.of(context).textTheme.titleLarge,
               ).tr(),
               Padding(
-                padding: const EdgeInsets.all(20.0),
+                padding: EdgeInsets.symmetric(horizontal: 1.6.h),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
@@ -87,12 +89,12 @@ class _LogInScreenState extends State<LogInScreen> {
                       emailController: _emailEditingcontroller,
                       passwordController: _passwordEditingcontroller,
                     ),
-                    const SizedBox(
-                      height: 8.0,
+                    SizedBox(
+                      height: 1.25.h,
                     ),
                     const BuildForgetPassword(),
-                    const SizedBox(
-                      height: 30.0,
+                    SizedBox(
+                      height: 4.5.h,
                     ),
                     BuildLogInButton(),
                   ],

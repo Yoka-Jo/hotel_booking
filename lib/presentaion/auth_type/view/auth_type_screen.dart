@@ -1,9 +1,9 @@
 import 'dart:async';
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:hotel_booking/app/functions.dart';
+import 'package:hotel_booking/presentaion/common/components/build_auth_image.dart';
+import 'package:sizer/sizer.dart';
 import '../../../app/app_prefs.dart';
 import '../../../app/dependency_injection.dart';
 import '../../common/helpers/dynamic_link_helper.dart';
@@ -53,13 +53,13 @@ class _AuthTypeScreenState extends State<AuthTypeScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: EdgeInsets.symmetric(horizontal: 3.w),
         child: ListView(
           physics: const NeverScrollableScrollPhysics(),
           children: [
-            // const SizedBox(
-            //   height: 124,
-            // ),
+            SizedBox(
+              height: 12.h,
+            ),
             RichText(
               textAlign: TextAlign.center,
               text: TextSpan(
@@ -77,12 +77,9 @@ class _AuthTypeScreenState extends State<AuthTypeScreen>
                         style: Theme.of(context).textTheme.titleLarge)
                   ]),
             ),
-            const SizedBox(
-              height: 52,
-            ),
-            SvgPicture.asset(ImageAssets.travelImage),
-            const SizedBox(
-              height: 50,
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 5.h),
+              child: const BuildAuthImage(imagePath: ImageAssets.travelImage),
             ),
             ElevatedButton(
               onPressed: () {
@@ -95,8 +92,8 @@ class _AuthTypeScreenState extends State<AuthTypeScreen>
                     ),
               ).tr(),
             ),
-            const SizedBox(
-              height: 20,
+            SizedBox(
+              height: 3.2.h,
             ),
             ElevatedButton(
               style: Theme.of(context).elevatedButtonTheme.style!.copyWith(
