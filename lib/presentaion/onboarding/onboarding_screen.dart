@@ -52,6 +52,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             child: TextButton(
               onPressed: () async {
                 await _appPrefs.saveIsOnBoardingScreenViewed();
+                if (!mounted) return;
                 Navigator.of(context)
                     .pushReplacementNamed(Routes.authTypeRoute);
               },
@@ -79,7 +80,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         },
         itemBuilder: (context, i) {
           return Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(10.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,

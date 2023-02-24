@@ -26,6 +26,7 @@ class BuildHotelmage extends StatelessWidget {
           borderRadius: BorderRadius.circular(borderRadius),
           child: Image.network(
             hotelData.photos[0],
+            width: double.maxFinite,
             fit: BoxFit.cover,
           ),
         ),

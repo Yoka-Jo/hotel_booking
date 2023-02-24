@@ -20,6 +20,7 @@ class BuildResetPasswordInputFields extends StatelessWidget {
     return Column(
       children: [
         BuildTextFormField(
+          textInputAction: TextInputAction.next,
           label: AppStrings.password.tr(),
           controller: passwordController,
           errorText: cubit.errorPassword,
@@ -28,6 +29,7 @@ class BuildResetPasswordInputFields extends StatelessWidget {
           height: 20.0,
         ),
         BuildTextFormField(
+          textInputAction: TextInputAction.done,
           label: AppStrings.confirmPassword.tr(),
           controller: confirmPasswordController,
           errorText: cubit.errorConfirmPassword,

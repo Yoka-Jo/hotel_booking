@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:sizer/sizer.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BuildAuthImage extends StatelessWidget {
   final String imagePath;
@@ -9,7 +9,7 @@ class BuildAuthImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 30.h,
+      height: 250.h,
       child: SvgPicture.asset(
         imagePath,
       ),

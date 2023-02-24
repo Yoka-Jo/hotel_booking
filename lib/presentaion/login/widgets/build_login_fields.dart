@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:sizer/sizer.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../common/components/build_text_from_field.dart';
 import '../../resources/strings_manager.dart';
 import '../cubit/login_cubit.dart';
@@ -21,14 +21,16 @@ class BuildLogInFields extends StatelessWidget {
     return Column(
       children: [
         BuildTextFormField(
+          textInputAction: TextInputAction.next,
           label: AppStrings.email.tr(),
           errorText: cubit.errorEmail,
           controller: emailController,
         ),
         SizedBox(
-          height: 3.h,
+          height: 20.h,
         ),
         BuildTextFormField(
+          textInputAction: TextInputAction.done,
           label: AppStrings.password.tr(),
           errorText: cubit.errorPassword,
           controller: passwordController,

@@ -1,7 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:hotel_booking/presentaion/common/components/build_divider.dart';
-import 'package:hotel_booking/presentaion/place_details/widgets/build_body_text.dart';
 import 'package:hotel_booking/presentaion/place_details/widgets/build_hotel_info.dart';
 import 'package:hotel_booking/presentaion/place_details/widgets/build_title.dart';
 import 'package:hotel_booking/presentaion/resources/strings_manager.dart';
@@ -9,6 +8,7 @@ import 'package:hotel_booking/presentaion/resources/strings_manager.dart';
 import '../../../domain/models/models.dart';
 import '../../resources/colors_manager.dart';
 import '../../resources/routes_manager.dart';
+import 'build_body_text.dart';
 import 'build_hotel_images.dart';
 
 class BuildHotelData extends StatelessWidget {
@@ -48,20 +48,24 @@ class BuildHotelData extends StatelessWidget {
             children: [
               Expanded(child: BuildBodyText(bodyText: hotelData.address)),
               const SizedBox(width: 10),
-              OutlinedButton(
-                  onPressed: () {
-                    Navigator.of(context).pushNamed(
-                      Routes.mapRoute,
-                      arguments: Location(
-                        longitude: hotelData.long,
-                        latitude: hotelData.lat,
-                      ),
-                    );
-                  },
-                  child: Text(
-                    AppStrings.showLocation.tr(),
-                    style: const TextStyle(color: AppColors.primary),
-                  ))
+              Expanded(
+                child: SizedBox(
+                  child: OutlinedButton(
+                      onPressed: () {
+                        Navigator.of(context).pushNamed(
+                          Routes.mapRoute,
+                          arguments: Location(
+                            longitude: hotelData.long,
+                            latitude: hotelData.lat,
+                          ),
+                        );
+                      },
+                      child: Text(
+                        AppStrings.showLocation.tr(),
+                        style: const TextStyle(color: AppColors.primary),
+                      )),
+                ),
+              )
             ],
           ),
           const BuildDivider(),

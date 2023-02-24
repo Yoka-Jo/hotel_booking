@@ -103,10 +103,14 @@ class StateRenderer extends StatelessWidget {
   }
 
   Widget _getItemsColumn(List<Widget> children) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: children,
+    return Expanded(
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: children,
+        ),
+      ),
     );
   }
 

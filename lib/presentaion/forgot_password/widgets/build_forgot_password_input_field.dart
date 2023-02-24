@@ -16,6 +16,7 @@ class BuildForgotPasswordInputField extends StatelessWidget {
   Widget build(BuildContext context) {
     final cubit = ForgotPasswordCubit.get(context);
     return BuildTextFormField(
+      textInputAction: TextInputAction.done,
       label: AppStrings.email.tr(),
       controller: emailController,
       errorText: cubit.errorEmail,

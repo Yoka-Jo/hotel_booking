@@ -1,37 +1,37 @@
 {
   "project_info": {
-    "project_number": "881177570924",
-    "project_id": "notifications-b1072",
-    "storage_bucket": "notifications-b1072.appspot.com"
+    "project_number": "209628280743",
+    "project_id": "hotel-booking-36f6e",
+    "storage_bucket": "hotel-booking-36f6e.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:881177570924:android:d09ea05e1529c8dab03249",
+        "mobilesdk_app_id": "1:209628280743:android:4814002f5404350413a882",
         "android_client_info": {
-          "package_name": "com.example.hotel_booking"
+          "package_name": "com.yoka.hotel_booking"
         }
       },
       "oauth_client": [
         {
-          "client_id": "881177570924-gna63th02c3gh32sao39j67qu65qkqj5.apps.googleusercontent.com",
+          "client_id": "209628280743-evostsv1m2ov05j6uvu6etrkvie585hl.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyColTZZ5deLPRLzGroMLHKy1Lr28EuY9TE"
+          "current_key": "AIzaSyBfs7eJr7DFGNIjXhViZ3_XiDfcZOvt6E8"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "881177570924-gna63th02c3gh32sao39j67qu65qkqj5.apps.googleusercontent.com",
+              "client_id": "209628280743-evostsv1m2ov05j6uvu6etrkvie585hl.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "881177570924-okrajlolmu93qot9u8ss2m2hhoa7rat0.apps.googleusercontent.com",
+              "client_id": "209628280743-6drdd5a172c5dolb5r70lp2sem8vhj1l.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
                 "bundle_id": "com.example.hotelBooking"

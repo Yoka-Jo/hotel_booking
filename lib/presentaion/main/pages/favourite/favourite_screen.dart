@@ -13,7 +13,7 @@ class FavouriteScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocBuilder<MainCubit, HomeState>(
+      body: BlocBuilder<MainCubit, MainState>(
         builder: (context, state) {
           final favouriteHotels = MainCubit.get(context).favouriteHotels;
           log(favouriteHotels.length.toString());

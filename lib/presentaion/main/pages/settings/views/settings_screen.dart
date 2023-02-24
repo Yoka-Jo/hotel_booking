@@ -21,36 +21,48 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: FutureBuilder<Uri>(
-            future: _dynamicLinkHelper.createDynamicLink(),
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                log(snapshot.data.toString());
-                return Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const SizedBox(
-                        height: 30.0,
-                      ),
-                      const BuildChangeLanguae(),
-                      const BuildChangeAppTheme(),
-                      const SizedBox(
-                        height: 10.0,
-                      ),
-                      BuildShareButton(uri: snapshot.data),
-                      const SizedBox(
-                        height: 20.0,
-                      ),
-                      BuildLogoutButton(),
-                    ],
+      body: FutureBuilder<Uri>(
+        future: _dynamicLinkHelper.createDynamicLink(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            log(snapshot.data.toString());
+            return Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const SizedBox(
+                    height: 30.0,
                   ),
-                );
-              } else {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
-            }));
+                  const BuildChangeLanguae(),
+                  const BuildChangeAppTheme(),
+                  const SizedBox(
+                    height: 10.0,
+                  ),
+                  BuildShareButton(uri: snapshot.data),
+                  const SizedBox(
+                    height: 20.0,
+                  ),
+                  BuildLogoutButton(),
+                ],
+              ),
+            );
+          } else if (snapshot.hasError) {
+            log(snapshot.error.toString());
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Center(
+                child: Text(
+                  snapshot.error.toString(),
+                ),
+              ),
+            );
+          } else {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+        },
+      ),
+    );
   }
 }

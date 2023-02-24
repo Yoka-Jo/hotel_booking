@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:hotel_booking/data/data_source/remote_data_source.dart';
 import 'package:hotel_booking/data/mapper/mapper.dart';
 import 'package:hotel_booking/data/network/error_handler.dart';
@@ -104,7 +103,7 @@ class RepositoryImpl implements Repository {
       if (response.status == 200) {
         return Right(response.toDomain());
       } else {
-        log("======>" + response.message.toString());
+        log("======>${response.message}");
         return Left(
           Failure(
             code: response.status ?? 0,
@@ -179,5 +178,4 @@ class RepositoryImpl implements Repository {
       return Left(ErrorHandler.handle(e).failure);
     }
   }
-
 }

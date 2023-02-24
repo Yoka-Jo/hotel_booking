@@ -12,7 +12,8 @@ class BuildHotelName extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       hotelName,
-      style: Theme.of(context).textTheme.displaySmall,
+      overflow: TextOverflow.ellipsis,
+      style: Theme.of(context).textTheme.displayLarge,
     );
   }
 }

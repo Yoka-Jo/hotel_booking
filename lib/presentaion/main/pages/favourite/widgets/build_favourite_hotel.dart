@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hotel_booking/domain/models/models.dart';
 import 'package:hotel_booking/presentaion/main/widgets/build_hotel_image.dart';
-import 'package:sizer/sizer.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../widgets/build_favourite_icon.dart';
 import '../../../widgets/build_hotel_name.dart';
@@ -22,7 +22,7 @@ class BuildFavouriteHotel extends StatelessWidget {
           Stack(alignment: Alignment.topRight, children: [
             SizedBox(
                 width: double.infinity,
-                height: 28.h,
+                height: 200.h,
                 child: BuildHotelmage(
                   hotelData: favouriteHotel,
                   borderRadius: 0.0,

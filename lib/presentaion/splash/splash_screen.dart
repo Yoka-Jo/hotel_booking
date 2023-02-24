@@ -29,9 +29,19 @@ class _SplashScreenState extends State<SplashScreen> {
     bool isOnBoardingScreenViewed = _appPrefs.getIsOnBoardingScreenViewed();
     if (isOnBoardingScreenViewed) {
       if (await _auth.tryAutoLogin()) {
-        Navigator.pushReplacementNamed(context, Routes.mainRoute);
+        if (!mounted) return;
+        Navigator.pushNamedAndRemoveUntil(
+          context,
+          Routes.mainRoute,
+          (route) => false,
+        );
       } else {
-        Navigator.pushReplacementNamed(context, Routes.authTypeRoute);
+        if (!mounted) return;
+        Navigator.pushNamedAndRemoveUntil(
+          context,
+          Routes.authTypeRoute,
+          (route) => false,
+        );
       }
     } else {
       Navigator.pushReplacementNamed(context, Routes.onboardingRoute);

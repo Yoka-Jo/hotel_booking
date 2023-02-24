@@ -7,7 +7,7 @@ import 'package:hotel_booking/presentaion/common/state_renderer/state_renderer_i
 import 'package:hotel_booking/presentaion/login/widgets/build_login_button.dart';
 import 'package:hotel_booking/presentaion/resources/assets_manager.dart';
 import 'package:hotel_booking/presentaion/resources/strings_manager.dart';
-import 'package:sizer/sizer.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../app/app_prefs.dart';
 import '../../../app/dependency_injection.dart';
 import '../../resources/routes_manager.dart';
@@ -52,7 +52,7 @@ class _LogInScreenState extends State<LogInScreen> {
           SchedulerBinding.instance.addPostFrameCallback((_) {
             Navigator.of(context).pushNamedAndRemoveUntil(
               Routes.mainRoute,
-              (route) => true,
+              (route) => false,
             );
           });
         }
@@ -80,8 +80,11 @@ class _LogInScreenState extends State<LogInScreen> {
                 AppStrings.welcomeBadk,
                 style: Theme.of(context).textTheme.titleLarge,
               ).tr(),
+              SizedBox(
+                height: 40.h,
+              ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 1.6.h),
+                padding: EdgeInsets.all(20.w),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
@@ -90,11 +93,11 @@ class _LogInScreenState extends State<LogInScreen> {
                       passwordController: _passwordEditingcontroller,
                     ),
                     SizedBox(
-                      height: 1.25.h,
+                      height: 8.h,
                     ),
                     const BuildForgetPassword(),
                     SizedBox(
-                      height: 4.5.h,
+                      height: 60.h,
                     ),
                     BuildLogInButton(),
                   ],

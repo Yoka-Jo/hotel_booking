@@ -15,7 +15,7 @@ class ErrorHandler implements Exception {
   }
   Failure _handleError(DioError error) {
     switch (error.type) {
-      case DioErrorType.connectTimeout:
+      case DioErrorType.connectionTimeout:
         return DataSource.connectionTimeOut.getFailure();
 
       case DioErrorType.sendTimeout:
@@ -24,7 +24,7 @@ class ErrorHandler implements Exception {
       case DioErrorType.receiveTimeout:
         return DataSource.recieveTimeOut.getFailure();
 
-      case DioErrorType.response:
+      case DioErrorType.badResponse:
         if (error.response != null &&
             error.response!.data["status"] != null &&
             error.response!.data["message"] != null) {
@@ -36,9 +36,12 @@ class ErrorHandler implements Exception {
           return DataSource.defaultt.getFailure();
         }
       case DioErrorType.cancel:
-        return DataSource.cancel.getFailure();
+        return DataSource.requestCancelled.getFailure();
 
-      case DioErrorType.other:
+      case DioErrorType.badCertificate:
+        return DataSource.badCertificate.getFailure();
+      case DioErrorType.connectionError:
+      case DioErrorType.unknown:
         return DataSource.defaultt.getFailure();
     }
   }
@@ -53,12 +56,13 @@ enum DataSource {
   notFound,
   internalServerError,
   connectionTimeOut,
-  cancel,
+  requestCancelled,
   recieveTimeOut,
   sendTimeOut,
   cacheError,
   noInternetConnection,
   defaultt,
+  badCertificate,
 }
 
 extension DataSourceExtension on DataSource {
@@ -91,9 +95,10 @@ extension DataSourceExtension on DataSource {
         return Failure(
             code: ResponseCode.connectionTimeOut,
             message: ResponseMessage.connectionTimeOut.tr());
-      case DataSource.cancel:
+      case DataSource.requestCancelled:
         return Failure(
-            code: ResponseCode.cancel, message: ResponseMessage.cancel.tr());
+            code: ResponseCode.requestCancelled,
+            message: ResponseMessage.requestCancelled.tr());
       case DataSource.recieveTimeOut:
         return Failure(
             code: ResponseCode.receiveTimeOut,
@@ -118,6 +123,10 @@ extension DataSourceExtension on DataSource {
         return Failure(
             code: ResponseCode.defaultt,
             message: ResponseMessage.defaultt.tr());
+      case DataSource.badCertificate:
+        return Failure(
+            code: ResponseCode.badCertificate,
+            message: ResponseMessage.badCertificate.tr());
     }
   }
 }
@@ -133,12 +142,13 @@ class ResponseCode {
 
   // local status code
   static const int connectionTimeOut = -1;
-  static const int cancel = -2;
+  static const int requestCancelled = -2;
   static const int receiveTimeOut = -3;
   static const int sendTimeOut = -4;
   static const int cacheError = -5;
   static const int noInternetConnection = -6;
   static const int defaultt = -7;
+  static const int badCertificate = -8;
 }
 
 class ResponseMessage {
@@ -149,10 +159,11 @@ class ResponseMessage {
   static const String forbidden = AppStrings.forbiddenError;
   static const String internalServerError = AppStrings.internalServerError;
   static const String notFound = AppStrings.notFoundError;
+  static const String badCertificate = AppStrings.badCertificateError;
 
   // local response messages
   static const String connectionTimeOut = AppStrings.timeoutError;
-  static const String cancel = AppStrings.defaultError;
+  static const String requestCancelled = AppStrings.defaultError;
   static const String receiveTimeOut = AppStrings.timeoutError;
   static const String sendTimeOut = AppStrings.timeoutError;
   static const String cacheError = AppStrings.cacheError;

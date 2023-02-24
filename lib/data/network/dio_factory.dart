@@ -15,7 +15,6 @@ class DioFactory {
     Map<String, String> headers = {
       contentType: applicationJson,
       accept: applicationJson,
-      authorization: "Send Token Here",
     };
     dio.options = BaseOptions(
       baseUrl: Constants.baseUrl,

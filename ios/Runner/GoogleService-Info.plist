@@ -3,23 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>881177570924-okrajlolmu93qot9u8ss2m2hhoa7rat0.apps.googleusercontent.com</string>
+	<string>209628280743-6drdd5a172c5dolb5r70lp2sem8vhj1l.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.881177570924-okrajlolmu93qot9u8ss2m2hhoa7rat0</string>
-	<key>ANDROID_CLIENT_ID</key>
-	<string>881177570924-ia3htvunfmls25sle33qrcql92l40c20.apps.googleusercontent.com</string>
+	<string>com.googleusercontent.apps.209628280743-6drdd5a172c5dolb5r70lp2sem8vhj1l</string>
 	<key>API_KEY</key>
-	<string>AIzaSyCyBMsTvhun-d1a8KyJ70VbG8k1C83tB8Q</string>
+	<string>AIzaSyAwzfKe0T2QBHuDjly0v5fCIm1I4JNtmDM</string>
 	<key>GCM_SENDER_ID</key>
-	<string>881177570924</string>
+	<string>209628280743</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.example.hotelBooking</string>
 	<key>PROJECT_ID</key>
-	<string>notifications-b1072</string>
+	<string>hotel-booking-36f6e</string>
 	<key>STORAGE_BUCKET</key>
-	<string>notifications-b1072.appspot.com</string>
+	<string>hotel-booking-36f6e.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -31,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:881177570924:ios:8511846fe432f53cb03249</string>
+	<string>1:209628280743:ios:65098f636998b04113a882</string>
 </dict>
 </plist>

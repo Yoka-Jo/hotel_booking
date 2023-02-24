@@ -8,7 +8,7 @@ import 'package:hotel_booking/presentaion/common/components/build_auth_image.dar
 import 'package:hotel_booking/presentaion/common/state_renderer/state_renderer_impl.dart';
 import 'package:hotel_booking/presentaion/resources/assets_manager.dart';
 import 'package:hotel_booking/presentaion/resources/strings_manager.dart';
-import 'package:sizer/sizer.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../app/dependency_injection.dart';
 import '../../resources/routes_manager.dart';
 import '../cubit/signup_cubit.dart';
@@ -61,7 +61,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           await _appPrefs.saveUserData(state.authData.data!);
           SchedulerBinding.instance.addPostFrameCallback((_) {
             Navigator.of(context)
-                .pushNamedAndRemoveUntil(Routes.mainRoute, (route) => true);
+                .pushNamedAndRemoveUntil(Routes.mainRoute, (route) => false);
           });
         }
       },
@@ -85,7 +85,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 style: Theme.of(context).textTheme.titleLarge,
               ).tr(),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 1.6.h),
+                padding: EdgeInsets.all(20.w),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
@@ -95,11 +95,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       passwordController: _passwordEditingcontroller,
                     ),
                     SizedBox(
-                      height: 1.25.h,
+                      height: 8.h,
                     ),
                     const BuildHaveAccount(),
                     SizedBox(
-                      height: 4.5.h,
+                      height: 60.h,
                     ),
                     BuildSignUpButton()
                   ],

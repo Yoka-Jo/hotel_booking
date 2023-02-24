@@ -1,4 +1,4 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:hotel_booking/app/app_prefs.dart';
@@ -17,10 +17,10 @@ import '../../common/state_renderer/state_renderer.dart';
 import '../../resources/strings_manager.dart';
 part 'main_state.dart';
 
-class MainCubit extends Cubit<HomeState> {
+class MainCubit extends Cubit<MainState> {
   MainCubit(this._getHotelsUseCase, this._changeHotelFavStateUseCase,
       this._getFavouriteHotelsUseCase, this._searchForHotelsUseCase)
-      : super(HomeInitialState());
+      : super(MainInitialState());
   final GetHotelsUseCase _getHotelsUseCase;
   final ChangeHotelFavStateUseCase _changeHotelFavStateUseCase;
   final GetFavouriteHotelsUseCase _getFavouriteHotelsUseCase;
@@ -30,6 +30,10 @@ class MainCubit extends Cubit<HomeState> {
   static MainCubit get(BuildContext context) => Provider.of<MainCubit>(context);
   Hotels hotels =
       Hotels(data: const [], message: AppStrings.noHotelsFound.tr());
+
+  Hotels searchedHotels =
+      Hotels(data: const [], message: AppStrings.noHotelsFound.tr());
+
   List<HotelData> favouriteHotels = [];
   List<String> favouriteHotelsIds = [];
   Map<String, dynamic> userData = {};
@@ -37,10 +41,7 @@ class MainCubit extends Cubit<HomeState> {
   bool isSearching = false;
 
   Future<void> getHotels(BuildContext context,
-      {int? minAmount, int? maxAmount}) async {
-    if (hotels.data.isNotEmpty && minAmount == null && maxAmount == null) {
-      return;
-    }
+      {int minAmount = 0, int maxAmount = 999}) async {
     //! Loading state
     _currentState = LoadingState(
         stateRendererType: StateRendererType.fullScreenLoadingState);
@@ -48,8 +49,8 @@ class MainCubit extends Cubit<HomeState> {
     //! get hotels data
     var result = await _getHotelsUseCase(HotelsRequest(
       featured: true,
-      minAmount: minAmount ?? 0,
-      maxAmount: maxAmount ?? 999,
+      minAmount: minAmount,
+      maxAmount: maxAmount,
       limit: Constants.numberOfHotelsToGet,
     ));
     //! check if the result is data or failure
@@ -62,18 +63,21 @@ class MainCubit extends Cubit<HomeState> {
     },
         //! here we've got the hotels data
         (data) async {
-      await getFavouriteHotels(context);
-      hotels = data;
+      getFavouriteHotels(context).then((_) {
+        hotels = data;
+        favouriteHotels = [];
 
-      for (int i = 0; i < hotels.data.length; i++) {
-        for (var id in favouriteHotelsIds) {
-          if (id == hotels.data[i].id) {
-            favouriteHotels.add(hotels.data[i]);
+        for (int i = 0; i < hotels.data.length; i++) {
+          for (var id in favouriteHotelsIds) {
+            if (id == hotels.data[i].id) {
+              favouriteHotels.add(hotels.data[i]);
+            }
           }
         }
-      }
-      _currentState = ContentState();
-      context.read<FlowStateCubit>().setState(_currentState);
+
+        _currentState = ContentState();
+        context.read<FlowStateCubit>().setState(_currentState);
+      });
     });
   }
 
@@ -100,17 +104,17 @@ class MainCubit extends Cubit<HomeState> {
     var result = await _changeHotelFavStateUseCase(ChangeHotelFavStateRequest(
         userId: userData["userId"], hotelId: hotelId));
     result.fold((failure) {
-      emit(HomeFavouriteErrorState());
+      emit(MainFavouriteErrorState());
     }, (data) {
       if (favouriteHotelsIds.contains(hotelId)) {
         favouriteHotels.removeWhere((element) => element.id == hotelId);
         favouriteHotelsIds.remove(hotelId);
-        emit(HomeRemoveFromFavouriteSuccessfullyState());
+        emit(MainRemoveFromFavouriteSuccessfullyState());
       } else {
         favouriteHotels
             .add(hotels.data.firstWhere((element) => element.id == hotelId));
         favouriteHotelsIds.add(hotelId);
-        emit(HomeAddToFavouriteSuccessfullyState());
+        emit(MainAddToFavouriteSuccessfullyState());
       }
     });
   }
@@ -119,9 +123,9 @@ class MainCubit extends Cubit<HomeState> {
     if (name.isEmpty) {
       return;
     }
-    hotels.data.clear();
-    isSearching = true;
-    emit(HomeSearchLoagingState());
+
+    setSearchingTrue();
+
     //! get hotels data
     var result =
         await _searchForHotelsUseCase(SearchForHotelsRequest(hotelName: name));
@@ -135,22 +139,32 @@ class MainCubit extends Cubit<HomeState> {
     },
         //! here we've got the hotels data
         (hotelsData) async {
-      hotels = hotelsData.data.isNotEmpty
+      searchedHotels = hotelsData.data.isNotEmpty
           ? hotelsData
           : Hotels(data: const [], message: AppStrings.noHotelsFound.tr());
-      isSearching = false;
-      emit(HomeSearchSuccessState());
+
+      emit(MainSearchSuccessState());
     });
+  }
+
+  void setSearchingTrue() {
+    isSearching = true;
+    emit(MainSearchLoadingState());
+  }
+
+  void setSearchingFalse() {
+    isSearching = false;
+    emit(MainCloseSearchingState());
   }
 
   void clearHotels() {
     hotels = Hotels(data: const [], message: AppStrings.noHotelsFound.tr());
-    emit(HomeClearHotelsSuccessState());
+    emit(MainClearHotelsSuccessState());
   }
 
   void clearFavouriteHotels() {
     favouriteHotels.clear();
-    emit(HomeClearHotelsSuccessState());
+    emit(MainClearHotelsSuccessState());
   }
 
   bool isFavourite(String hotelId) => favouriteHotelsIds.contains(hotelId);

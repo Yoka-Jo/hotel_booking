@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
-import '../presentaion/resources/language_manager.dart';
+import '../presentaion/resources/localization/language_manager.dart';
 
 bool isEmailValid(String email) {
   return RegExp(

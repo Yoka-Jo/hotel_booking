@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sizer/sizer.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../domain/models/models.dart';
 import '../../../widgets/build_favourite_icon.dart';
@@ -18,31 +18,36 @@ class BuildPlacesWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: GridView.builder(
+          padding: EdgeInsets.zero,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
-            mainAxisSpacing: 2.h,
-            crossAxisSpacing: 2.8.w,
-            mainAxisExtent: 35.h,
+            mainAxisSpacing: 0.h,
+            crossAxisSpacing: 20.w,
+            childAspectRatio: 0.65,
           ),
-          physics: const BouncingScrollPhysics(),
+          physics: const AlwaysScrollableScrollPhysics(
+            parent: BouncingScrollPhysics(),
+          ),
           itemCount: hotels.length,
           itemBuilder: (context, i) {
             return Column(
+              mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Stack(alignment: Alignment.topRight, children: [
                   SizedBox(
-                      width: 100.w,
-                      height: 29.h,
-                      child: BuildHotelmage(
-                        hotelData: hotels[i],
-                        borderRadius: 8.0,
-                      )),
+                    height: 200.h,
+                    child: BuildHotelmage(
+                      hotelData: hotels[i],
+                      borderRadius: 8.0,
+                    ),
+                  ),
                   BuildFavouriteIcon(
                     hotelId: hotels[i].id,
                     borderRadius: 8.0,
                   )
                 ]),
+                SizedBox(height: 3.h),
                 BuildHotelName(hotelName: hotels[i].name)
               ],
             );

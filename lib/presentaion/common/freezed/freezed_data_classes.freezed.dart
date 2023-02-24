@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'freezed_data_classes.dart';
 
@@ -28,33 +28,37 @@ mixin _$LoginObject {
 abstract class $LoginObjectCopyWith<$Res> {
   factory $LoginObjectCopyWith(
           LoginObject value, $Res Function(LoginObject) then) =
-      _$LoginObjectCopyWithImpl<$Res>;
+      _$LoginObjectCopyWithImpl<$Res, LoginObject>;
+  @useResult
   $Res call({String email, String password});
 }
 
 /// @nodoc
-class _$LoginObjectCopyWithImpl<$Res> implements $LoginObjectCopyWith<$Res> {
+class _$LoginObjectCopyWithImpl<$Res, $Val extends LoginObject>
+    implements $LoginObjectCopyWith<$Res> {
   _$LoginObjectCopyWithImpl(this._value, this._then);
 
-  final LoginObject _value;
   // ignore: unused_field
-  final $Res Function(LoginObject) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? email = freezed,
-    Object? password = freezed,
+    Object? email = null,
+    Object? password = null,
   }) {
     return _then(_value.copyWith(
-      email: email == freezed
+      email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      password: password == freezed
+      password: null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -65,30 +69,30 @@ abstract class _$$_LoginObjectCopyWith<$Res>
           _$_LoginObject value, $Res Function(_$_LoginObject) then) =
       __$$_LoginObjectCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String email, String password});
 }
 
 /// @nodoc
-class __$$_LoginObjectCopyWithImpl<$Res> extends _$LoginObjectCopyWithImpl<$Res>
+class __$$_LoginObjectCopyWithImpl<$Res>
+    extends _$LoginObjectCopyWithImpl<$Res, _$_LoginObject>
     implements _$$_LoginObjectCopyWith<$Res> {
   __$$_LoginObjectCopyWithImpl(
       _$_LoginObject _value, $Res Function(_$_LoginObject) _then)
-      : super(_value, (v) => _then(v as _$_LoginObject));
+      : super(_value, _then);
 
-  @override
-  _$_LoginObject get _value => super._value as _$_LoginObject;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? email = freezed,
-    Object? password = freezed,
+    Object? email = null,
+    Object? password = null,
   }) {
     return _then(_$_LoginObject(
-      email: email == freezed
+      email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      password: password == freezed
+      password: null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
@@ -116,18 +120,17 @@ class _$_LoginObject implements _LoginObject {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_LoginObject &&
-            const DeepCollectionEquality().equals(other.email, email) &&
-            const DeepCollectionEquality().equals(other.password, password));
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.password, password) ||
+                other.password == password));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(email),
-      const DeepCollectionEquality().hash(password));
+  int get hashCode => Object.hash(runtimeType, email, password);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_LoginObjectCopyWith<_$_LoginObject> get copyWith =>
       __$$_LoginObjectCopyWithImpl<_$_LoginObject>(this, _$identity);
 }
@@ -138,9 +141,9 @@ abstract class _LoginObject implements LoginObject {
       required final String password}) = _$_LoginObject;
 
   @override
-  String get email => throw _privateConstructorUsedError;
+  String get email;
   @override
-  String get password => throw _privateConstructorUsedError;
+  String get password;
   @override
   @JsonKey(ignore: true)
   _$$_LoginObjectCopyWith<_$_LoginObject> get copyWith =>
@@ -162,38 +165,42 @@ mixin _$SignUpObject {
 abstract class $SignUpObjectCopyWith<$Res> {
   factory $SignUpObjectCopyWith(
           SignUpObject value, $Res Function(SignUpObject) then) =
-      _$SignUpObjectCopyWithImpl<$Res>;
+      _$SignUpObjectCopyWithImpl<$Res, SignUpObject>;
+  @useResult
   $Res call({String userName, String email, String password});
 }
 
 /// @nodoc
-class _$SignUpObjectCopyWithImpl<$Res> implements $SignUpObjectCopyWith<$Res> {
+class _$SignUpObjectCopyWithImpl<$Res, $Val extends SignUpObject>
+    implements $SignUpObjectCopyWith<$Res> {
   _$SignUpObjectCopyWithImpl(this._value, this._then);
 
-  final SignUpObject _value;
   // ignore: unused_field
-  final $Res Function(SignUpObject) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userName = freezed,
-    Object? email = freezed,
-    Object? password = freezed,
+    Object? userName = null,
+    Object? email = null,
+    Object? password = null,
   }) {
     return _then(_value.copyWith(
-      userName: userName == freezed
+      userName: null == userName
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
               as String,
-      email: email == freezed
+      email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      password: password == freezed
+      password: null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -204,36 +211,35 @@ abstract class _$$_SignUpObjectCopyWith<$Res>
           _$_SignUpObject value, $Res Function(_$_SignUpObject) then) =
       __$$_SignUpObjectCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String userName, String email, String password});
 }
 
 /// @nodoc
 class __$$_SignUpObjectCopyWithImpl<$Res>
-    extends _$SignUpObjectCopyWithImpl<$Res>
+    extends _$SignUpObjectCopyWithImpl<$Res, _$_SignUpObject>
     implements _$$_SignUpObjectCopyWith<$Res> {
   __$$_SignUpObjectCopyWithImpl(
       _$_SignUpObject _value, $Res Function(_$_SignUpObject) _then)
-      : super(_value, (v) => _then(v as _$_SignUpObject));
+      : super(_value, _then);
 
-  @override
-  _$_SignUpObject get _value => super._value as _$_SignUpObject;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userName = freezed,
-    Object? email = freezed,
-    Object? password = freezed,
+    Object? userName = null,
+    Object? email = null,
+    Object? password = null,
   }) {
     return _then(_$_SignUpObject(
-      userName: userName == freezed
+      userName: null == userName
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
               as String,
-      email: email == freezed
+      email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      password: password == freezed
+      password: null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
@@ -264,20 +270,19 @@ class _$_SignUpObject implements _SignUpObject {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SignUpObject &&
-            const DeepCollectionEquality().equals(other.userName, userName) &&
-            const DeepCollectionEquality().equals(other.email, email) &&
-            const DeepCollectionEquality().equals(other.password, password));
+            (identical(other.userName, userName) ||
+                other.userName == userName) &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.password, password) ||
+                other.password == password));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(userName),
-      const DeepCollectionEquality().hash(email),
-      const DeepCollectionEquality().hash(password));
+  int get hashCode => Object.hash(runtimeType, userName, email, password);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_SignUpObjectCopyWith<_$_SignUpObject> get copyWith =>
       __$$_SignUpObjectCopyWithImpl<_$_SignUpObject>(this, _$identity);
 }
@@ -289,11 +294,11 @@ abstract class _SignUpObject implements SignUpObject {
       required final String password}) = _$_SignUpObject;
 
   @override
-  String get userName => throw _privateConstructorUsedError;
+  String get userName;
   @override
-  String get email => throw _privateConstructorUsedError;
+  String get email;
   @override
-  String get password => throw _privateConstructorUsedError;
+  String get password;
   @override
   @JsonKey(ignore: true)
   _$$_SignUpObjectCopyWith<_$_SignUpObject> get copyWith =>
@@ -314,34 +319,37 @@ mixin _$ResetPasswordObject {
 abstract class $ResetPasswordObjectCopyWith<$Res> {
   factory $ResetPasswordObjectCopyWith(
           ResetPasswordObject value, $Res Function(ResetPasswordObject) then) =
-      _$ResetPasswordObjectCopyWithImpl<$Res>;
+      _$ResetPasswordObjectCopyWithImpl<$Res, ResetPasswordObject>;
+  @useResult
   $Res call({String password, String confirmPassword});
 }
 
 /// @nodoc
-class _$ResetPasswordObjectCopyWithImpl<$Res>
+class _$ResetPasswordObjectCopyWithImpl<$Res, $Val extends ResetPasswordObject>
     implements $ResetPasswordObjectCopyWith<$Res> {
   _$ResetPasswordObjectCopyWithImpl(this._value, this._then);
 
-  final ResetPasswordObject _value;
   // ignore: unused_field
-  final $Res Function(ResetPasswordObject) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? password = freezed,
-    Object? confirmPassword = freezed,
+    Object? password = null,
+    Object? confirmPassword = null,
   }) {
     return _then(_value.copyWith(
-      password: password == freezed
+      password: null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
-      confirmPassword: confirmPassword == freezed
+      confirmPassword: null == confirmPassword
           ? _value.confirmPassword
           : confirmPassword // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -352,31 +360,30 @@ abstract class _$$_ResetPasswordObjectCopyWith<$Res>
           $Res Function(_$_ResetPasswordObject) then) =
       __$$_ResetPasswordObjectCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String password, String confirmPassword});
 }
 
 /// @nodoc
 class __$$_ResetPasswordObjectCopyWithImpl<$Res>
-    extends _$ResetPasswordObjectCopyWithImpl<$Res>
+    extends _$ResetPasswordObjectCopyWithImpl<$Res, _$_ResetPasswordObject>
     implements _$$_ResetPasswordObjectCopyWith<$Res> {
   __$$_ResetPasswordObjectCopyWithImpl(_$_ResetPasswordObject _value,
       $Res Function(_$_ResetPasswordObject) _then)
-      : super(_value, (v) => _then(v as _$_ResetPasswordObject));
+      : super(_value, _then);
 
-  @override
-  _$_ResetPasswordObject get _value => super._value as _$_ResetPasswordObject;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? password = freezed,
-    Object? confirmPassword = freezed,
+    Object? password = null,
+    Object? confirmPassword = null,
   }) {
     return _then(_$_ResetPasswordObject(
-      password: password == freezed
+      password: null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
-      confirmPassword: confirmPassword == freezed
+      confirmPassword: null == confirmPassword
           ? _value.confirmPassword
           : confirmPassword // ignore: cast_nullable_to_non_nullable
               as String,
@@ -405,19 +412,18 @@ class _$_ResetPasswordObject implements _ResetPasswordObject {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ResetPasswordObject &&
-            const DeepCollectionEquality().equals(other.password, password) &&
-            const DeepCollectionEquality()
-                .equals(other.confirmPassword, confirmPassword));
+            (identical(other.password, password) ||
+                other.password == password) &&
+            (identical(other.confirmPassword, confirmPassword) ||
+                other.confirmPassword == confirmPassword));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(password),
-      const DeepCollectionEquality().hash(confirmPassword));
+  int get hashCode => Object.hash(runtimeType, password, confirmPassword);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ResetPasswordObjectCopyWith<_$_ResetPasswordObject> get copyWith =>
       __$$_ResetPasswordObjectCopyWithImpl<_$_ResetPasswordObject>(
           this, _$identity);
@@ -429,9 +435,9 @@ abstract class _ResetPasswordObject implements ResetPasswordObject {
       required final String confirmPassword}) = _$_ResetPasswordObject;
 
   @override
-  String get password => throw _privateConstructorUsedError;
+  String get password;
   @override
-  String get confirmPassword => throw _privateConstructorUsedError;
+  String get confirmPassword;
   @override
   @JsonKey(ignore: true)
   _$$_ResetPasswordObjectCopyWith<_$_ResetPasswordObject> get copyWith =>
@@ -451,29 +457,33 @@ mixin _$ForgotPasswordObject {
 abstract class $ForgotPasswordObjectCopyWith<$Res> {
   factory $ForgotPasswordObjectCopyWith(ForgotPasswordObject value,
           $Res Function(ForgotPasswordObject) then) =
-      _$ForgotPasswordObjectCopyWithImpl<$Res>;
+      _$ForgotPasswordObjectCopyWithImpl<$Res, ForgotPasswordObject>;
+  @useResult
   $Res call({String email});
 }
 
 /// @nodoc
-class _$ForgotPasswordObjectCopyWithImpl<$Res>
+class _$ForgotPasswordObjectCopyWithImpl<$Res,
+        $Val extends ForgotPasswordObject>
     implements $ForgotPasswordObjectCopyWith<$Res> {
   _$ForgotPasswordObjectCopyWithImpl(this._value, this._then);
 
-  final ForgotPasswordObject _value;
   // ignore: unused_field
-  final $Res Function(ForgotPasswordObject) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? email = freezed,
+    Object? email = null,
   }) {
     return _then(_value.copyWith(
-      email: email == freezed
+      email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -484,26 +494,25 @@ abstract class _$$_ForgotPasswordObjectCopyWith<$Res>
           $Res Function(_$_ForgotPasswordObject) then) =
       __$$_ForgotPasswordObjectCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String email});
 }
 
 /// @nodoc
 class __$$_ForgotPasswordObjectCopyWithImpl<$Res>
-    extends _$ForgotPasswordObjectCopyWithImpl<$Res>
+    extends _$ForgotPasswordObjectCopyWithImpl<$Res, _$_ForgotPasswordObject>
     implements _$$_ForgotPasswordObjectCopyWith<$Res> {
   __$$_ForgotPasswordObjectCopyWithImpl(_$_ForgotPasswordObject _value,
       $Res Function(_$_ForgotPasswordObject) _then)
-      : super(_value, (v) => _then(v as _$_ForgotPasswordObject));
+      : super(_value, _then);
 
-  @override
-  _$_ForgotPasswordObject get _value => super._value as _$_ForgotPasswordObject;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? email = freezed,
+    Object? email = null,
   }) {
     return _then(_$_ForgotPasswordObject(
-      email: email == freezed
+      email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
@@ -529,15 +538,15 @@ class _$_ForgotPasswordObject implements _ForgotPasswordObject {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ForgotPasswordObject &&
-            const DeepCollectionEquality().equals(other.email, email));
+            (identical(other.email, email) || other.email == email));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(email));
+  int get hashCode => Object.hash(runtimeType, email);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ForgotPasswordObjectCopyWith<_$_ForgotPasswordObject> get copyWith =>
       __$$_ForgotPasswordObjectCopyWithImpl<_$_ForgotPasswordObject>(
           this, _$identity);
@@ -548,7 +557,7 @@ abstract class _ForgotPasswordObject implements ForgotPasswordObject {
       _$_ForgotPasswordObject;
 
   @override
-  String get email => throw _privateConstructorUsedError;
+  String get email;
   @override
   @JsonKey(ignore: true)
   _$$_ForgotPasswordObjectCopyWith<_$_ForgotPasswordObject> get copyWith =>

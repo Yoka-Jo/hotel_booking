@@ -1,20 +1,26 @@
 part of 'main_cubit.dart';
 
 @immutable
-abstract class HomeState {}
+abstract class MainState {}
 
-class HomeInitialState extends HomeState {}
+class MainInitialState extends MainState {}
 
-class HomeAddToFavouriteSuccessfullyState extends HomeState {}
+class MainAddToFavouriteSuccessfullyState extends MainState {}
 
-class HomeRemoveFromFavouriteSuccessfullyState extends HomeState {}
+class MainRemoveFromFavouriteSuccessfullyState extends MainState {}
 
-class HomeFavouriteErrorState extends HomeState {}
+class MainFavouriteErrorState extends MainState {}
 
-class HomeSearchLoagingState extends HomeState {}
+class MainSearchLoadingState extends MainState {}
 
-class HomeSearchSuccessState extends HomeState {}
+class MainCloseSearchingState extends MainState {}
 
-class HomeClearHotelsSuccessState extends HomeState {}
+class MainSearchSuccessState extends MainState {}
 
-class HomeGetFavouriteHotelsSuccessState extends HomeState {}
+class MainClearHotelsSuccessState extends MainState {}
+
+class MainGetFavouriteHotelsSuccessState extends MainState {}
+
+class MainSetSearchingToTrueState extends MainState {}
+
+class MainSetSearchingToFalseState extends MainState {}

@@ -22,8 +22,8 @@ class LoginCubit extends Cubit<LoginState> {
   static LoginCubit get(BuildContext context) =>
       BlocProvider.of<LoginCubit>(context);
 
-  LoginObject loginObject = LoginObject(email: "", password: "");
   FlowState currentState = ContentState();
+  LoginObject loginObject = LoginObject(email: "", password: "");
   bool areInputsValid = false;
   String? errorEmail;
   String? errorPassword;

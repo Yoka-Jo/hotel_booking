@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hotel_booking/domain/models/models.dart';
+
 import '../widgets/build_click_for_more_button.dart';
 import '../widgets/build_hotel_data.dart';
 import '../widgets/build_hotel_details_image.dart';

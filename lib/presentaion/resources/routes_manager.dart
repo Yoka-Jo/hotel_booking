@@ -101,7 +101,9 @@ class RoutesGenerator {
           initHomeModule();
           return MaterialPageRoute(
               builder: (_) => BlocProvider(
-                    create: (context) => instance<MainCubit>(),
+                    create: (context) => instance<MainCubit>()
+                      ..getHotels(context)
+                      ..getFavouriteHotels(context),
                     child: const MainScreen(),
                   ));
         }

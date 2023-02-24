@@ -26,8 +26,9 @@ class AuthenticationHelper {
       _authTimer?.cancel();
       _authTimer = null;
     }
-    await _appPrefs.removeData(key: kPrefsUserData);
-    Phoenix.rebirth(context);
+    _appPrefs.removeData(key: kPrefsUserData).then((value) {
+      Phoenix.rebirth(context);
+    });
   }
 
   void autoLogout(BuildContext context) {

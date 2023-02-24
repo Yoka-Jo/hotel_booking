@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import '../../resources/language_manager.dart';
+import '../../resources/localization/language_manager.dart';
 import 'build_body_text.dart';
 import 'build_title.dart';
 

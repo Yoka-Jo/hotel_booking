@@ -1,6 +1,6 @@
 class Constants {
   static const String baseUrl =
-      "https://yoka-hotel-booking.herokuapp.com/api"; //"http://192.168.1.10:3000/api";
+      "https://lime-bright-ox.cyclic.app/api"; //"http://192.168.1.10:3000/api";
 
   static const String loginPath = "/auth/login";
   static const String signUpPath = "/auth/register";
@@ -12,9 +12,9 @@ class Constants {
   static const String getFavouriteHotelsPath =
       "/users/getFavouriteHotels/{userId}";
   static const String searchForHotels = "/hotels/search";
-  static const int apiTimeOut = 60 * 1000;
+  static const Duration apiTimeOut = Duration(milliseconds: 60 * 1000);
   static const numberOfHotelsToGet = 1000;
-  static const int durationOfChangeLanguage = 500;
+  static const int durationOfChangeLanguage = 300;
   static const String googleMapDarkTheme = '''
                     [
                       {

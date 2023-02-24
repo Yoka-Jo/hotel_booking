@@ -1,4 +1,5 @@
 class AppStrings {
+  static const String priceNotValid = "price_not_valid";
   static const String noRouteFound = "no_route_found";
   static const String onboardingTitlePage_1 = "on_boarding_title1";
   static const String onboardingTitlePage_2 = "on_boarding_title2";
@@ -41,8 +42,8 @@ class AppStrings {
   static const String showLocation = "show_location";
   static const String distance = "distance";
   static const String changeLanguage = "change-language";
-  static const String darkMode = "dark-mode";
-  static const String lightMode = "light-mode";
+  static const String darkMode = "dark_mode";
+  static const String lightMode = "light_mode";
   static const String share = "share";
   static const String arabic = "arabic";
   static const String english = "english";
@@ -68,4 +69,5 @@ class AppStrings {
   static const String defaultError = "default_error";
   static const String cacheError = "cache_error";
   static const String noInternetError = "no_internet_error";
+  static const String badCertificateError = "bad_certificate_error";
 }

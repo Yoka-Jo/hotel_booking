@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../resources/colors_manager.dart';
 import '../cubit/main_cubit.dart';
@@ -20,8 +21,8 @@ class BuildFavouriteIcon extends StatelessWidget {
         context.read<MainCubit>().changeHotelFavState(hotelId);
       },
       child: Container(
-        height: 40.0,
-        width: 40.0,
+        height: 40.w,
+        width: 40.w,
         decoration: BoxDecoration(
           color: AppColors.primary,
           borderRadius: BorderRadius.circular(borderRadius),

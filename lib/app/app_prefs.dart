@@ -1,10 +1,6 @@
 import 'dart:convert';
-import 'dart:io';
-import 'package:flutter/material.dart';
 import 'package:hotel_booking/domain/models/models.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../presentaion/resources/language_manager.dart';
-import 'package:easy_localization/easy_localization.dart';
 
 const String kPrefsIsLightTheme = "is_light_theme";
 const String kPrefsLang = "app_language";
@@ -16,34 +12,6 @@ const String kPrefsForgotPasswordData = "forgot_password_data";
 class AppPreferences {
   final SharedPreferences _sharedPreferences;
   AppPreferences(this._sharedPreferences);
-
-  String getAppLanguage(BuildContext context) {
-    String? language = _sharedPreferences.getString(kPrefsLang);
-    if (language != null && language.isNotEmpty) {
-      return language;
-    } else {
-      return isSupportedLocale(context)
-          ? Platform.localeName
-          : LanguageType.english.getValue();
-    }
-  }
-
-  bool isSupportedLocale(BuildContext context) => context.supportedLocales
-      .map((localeName) => localeName.toString())
-      .toList()
-      .contains(Platform.localeName);
-
-  Future<void> changeAppLanguage(LanguageType languageTyp) async =>
-      await _sharedPreferences.setString(kPrefsLang, languageTyp.getValue());
-
-  Future<Locale> getLocal(BuildContext context) async {
-    String currentLang = getAppLanguage(context);
-    if (currentLang == LanguageType.arabic.getValue()) {
-      return arabicLocal;
-    } else {
-      return englishLocal;
-    }
-  }
 
   Map<String, dynamic> getUserData() {
     String? userData = _sharedPreferences.getString(kPrefsUserData);

@@ -1,8 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hotel_booking/app/functions.dart';
-import 'package:hotel_booking/presentaion/resources/language_manager.dart';
+import 'package:hotel_booking/presentaion/resources/localization/language_manager.dart';
 import 'package:hotel_booking/presentaion/resources/strings_manager.dart';
 import 'dart:ui' as ui;
 import '../../../../resources/colors_manager.dart';
@@ -11,10 +12,12 @@ import '../../../cubit/main_cubit.dart';
 class BuildSearchWidget extends StatefulWidget {
   final GlobalKey<ScaffoldState> scaffoldKey;
   final BuildContext homeContext;
+  final FocusNode focusNode;
   const BuildSearchWidget({
     Key? key,
     required this.scaffoldKey,
     required this.homeContext,
+    required this.focusNode,
   }) : super(key: key);
 
   @override
@@ -24,29 +27,32 @@ class BuildSearchWidget extends StatefulWidget {
 class _BuildSearchWidgetState extends State<BuildSearchWidget> {
   final _minPriceController = TextEditingController();
   final _maxPriceController = TextEditingController();
-  final FocusNode focusNode = FocusNode();
+  final _searchController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
   bool isSearching = false;
 
-  @override
-  void initState() {
-    super.initState();
-    focusNode.addListener(() {
-      if (!focusNode.hasFocus) {
-        setState(() {
-          isSearching = false;
-        });
-      } else {
-        setState(() {
-          isSearching = true;
-        });
-      }
-    });
-  }
+  FocusNode get focusNode => widget.focusNode;
 
   @override
   void dispose() {
     focusNode.dispose();
     super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    focusNode.addListener(
+      () {
+        if (!focusNode.hasFocus) {
+          setState(
+            () {
+              isSearching = false;
+            },
+          );
+        }
+      },
+    );
   }
 
   @override
@@ -60,14 +66,20 @@ class _BuildSearchWidgetState extends State<BuildSearchWidget> {
   }
 
   Widget buildSearchTextField() {
-    FocusScopeNode currentFocus = FocusScope.of(context);
-    if (!currentFocus.hasPrimaryFocus) {}
     return Expanded(
       child: SizedBox(
         height: 50.0,
         child: Directionality(
           textDirection: getTextDirection(context),
           child: TextFormField(
+            onTap: () {
+              setState(
+                () {
+                  isSearching = true;
+                },
+              );
+            },
+            controller: _searchController,
             focusNode: focusNode,
             onChanged: (value) {
               widget.homeContext
@@ -107,22 +119,25 @@ class _BuildSearchWidgetState extends State<BuildSearchWidget> {
               padding: const EdgeInsets.all(10.0),
               child: SizedBox(
                 height: 220,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    buildPriceField(
-                        AppStrings.minPrice.tr(), _minPriceController),
-                    const SizedBox(
-                      height: 20.0,
-                    ),
-                    buildPriceField(
-                        AppStrings.maxPrice.tr(), _maxPriceController),
-                    const SizedBox(
-                      height: 20.0,
-                    ),
-                    searchButton()
-                  ],
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      buildPriceField(
+                          AppStrings.minPrice.tr(), _minPriceController),
+                      const SizedBox(
+                        height: 20.0,
+                      ),
+                      buildPriceField(
+                          AppStrings.maxPrice.tr(), _maxPriceController),
+                      const SizedBox(
+                        height: 20.0,
+                      ),
+                      searchButton()
+                    ],
+                  ),
                 ),
               ),
             );
@@ -141,18 +156,16 @@ class _BuildSearchWidgetState extends State<BuildSearchWidget> {
       width: double.infinity,
       child: ElevatedButton(
         onPressed: () {
-          Navigator.of(context).pop();
-          widget.homeContext.read<MainCubit>().getHotels(
-                widget.homeContext,
-                minAmount: _minPriceController.text.isNotEmpty
-                    ? int.tryParse(_minPriceController.text)
-                    : 0,
-                maxAmount: _maxPriceController.text.isNotEmpty
-                    ? int.tryParse(_maxPriceController.text)
-                    : 999,
-              );
-          _minPriceController.clear();
-          _maxPriceController.clear();
+          if (_formKey.currentState!.validate()) {
+            Navigator.of(context).pop();
+            widget.homeContext.read<MainCubit>().getHotels(
+                  widget.homeContext,
+                  minAmount: int.parse(_minPriceController.text),
+                  maxAmount: int.parse(_maxPriceController.text),
+                );
+            _minPriceController.clear();
+            _maxPriceController.clear();
+          }
         },
         child: const Text(
           AppStrings.search,
@@ -176,8 +189,15 @@ class _BuildSearchWidgetState extends State<BuildSearchWidget> {
           ),
           SizedBox(
               height: 50.0,
-              width: 80.0,
-              child: TextField(
+              width: 200.w,
+              child: TextFormField(
+                textAlign: TextAlign.center,
+                validator: (value) {
+                  if (int.tryParse(value ?? "") == null || value!.isEmpty) {
+                    return AppStrings.priceNotValid.tr();
+                  }
+                  return null;
+                },
                 cursorColor: AppColors.primary,
                 style: Theme.of(context).textTheme.displayLarge,
                 keyboardType: TextInputType.number,
@@ -195,17 +215,15 @@ class _BuildSearchWidgetState extends State<BuildSearchWidget> {
           : const EdgeInsets.only(left: 8.0),
       child: SizedBox(
         height: 50.0,
+        width: 80.w,
         child: OutlinedButton(
             style: Theme.of(context).outlinedButtonTheme.style!.copyWith(
                 side: MaterialStateProperty.all<BorderSide>(
                     const BorderSide(color: AppColors.red, width: 1.5))),
             onPressed: () {
               focusNode.unfocus();
-              widget.homeContext.read<MainCubit>().clearHotels();
-              widget.homeContext.read<MainCubit>().clearFavouriteHotels();
-              widget.homeContext.read<MainCubit>()
-                ..getHotels(widget.homeContext)
-                ..getFavouriteHotels(widget.homeContext);
+              _searchController.clear();
+              widget.homeContext.read<MainCubit>().setSearchingFalse();
             },
             child: Text(
               AppStrings.cancel.tr(),
